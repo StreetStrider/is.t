@@ -1,0 +1,27 @@
+{
+     "name": "is.t",
+  "version": "0.0.0",
+
+  "description": "lightweight runtime type,invariant and contract check",
+
+  "license": "ISC",
+   "author": "Strider <strange.transistor@gmail.com>",
+
+  "scripts":
+  {
+    "start": "node -r esm -r console-ultimate start"
+  },
+
+  "dependencies":
+  {
+  },
+
+  "devDependencies":
+  {
+    "esm":
+      "3",
+
+    "console-ultimate":
+      "3"
+  }
+}
