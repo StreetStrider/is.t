@@ -24,9 +24,9 @@ function is_iterable (value)
 }
 
 
-test(() => concat('/', [ 'a', 'b', 'c' ]))
-test(() => concat('/', new Set([ 'a', 'b', 'c' ])))
-test(() => concat('/', {}))
+attempt(() => concat('/', [ 'a', 'b', 'c' ]))
+attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
+attempt(() => concat('/', {}))
 
 
 //
@@ -63,16 +63,18 @@ function Contract (contract)
 	{
 		var evr = check(value)
 
-		if (true !== evr) { throw evr }
+		if (true === evr) { return value }
 
-		return value
+		Error.captureStackTrace(evr, validate)
+
+		throw evr
 	}
 
 	return validate
 }
 
 
-function test (fn)
+function attempt (fn)
 {
 	try
 	{
