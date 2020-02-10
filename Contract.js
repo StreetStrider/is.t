@@ -1,6 +1,8 @@
 
 import Name from 'function-name'
 
+import Wrong from './Wrong'
+
 
 export default function Contract (name, fn)
 {
@@ -15,6 +17,7 @@ export default function Contract (name, fn)
 		throw evr
 	}
 
+
 	function check (value)
 	{
 		var evr = fn(value)
@@ -24,18 +27,31 @@ export default function Contract (name, fn)
 			return true
 		}
 
-		if (evr instanceof Error)
+		if (Wrong.is(evr))
 		{
 			return evr
 		}
 
-		if (typeof evr === 'string')
+		if (evr instanceof Error)
 		{
-			return new TypeError(evr)
+			var wrong = Wrong('bare_error', 'Bare Error occured due Contract checking')
+			wrong.due = evr
+		}
+		else if (typeof evr === 'string')
+		{
+			var wrong = Wrong(evr)
+		}
+		else
+		{
+			var wrong = Wrong('unknown_violation', 'Unknown object occured due Contract checking')
+			wrong.due = evr
 		}
 
-		return new TypeError
+		wrong.contract = contract
+
+		return wrong
 	}
+
 
 	function is (value)
 	{
