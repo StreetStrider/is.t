@@ -1,7 +1,20 @@
 
+import Name from 'function-name'
 
-export default function Contract (fn)
+
+export default function Contract (name, fn)
 {
+	function validate (value)
+	{
+		var evr = check(value)
+
+		if (true === evr) { return value }
+
+		Error.captureStackTrace(evr, validate)
+
+		throw evr
+	}
+
 	function check (value)
 	{
 		var evr = fn(value)
@@ -24,21 +37,20 @@ export default function Contract (fn)
 		return new TypeError
 	}
 
-	function test (value)
+	function is (value)
 	{
 		return (true === check(value))
 	}
 
-	function validate (value)
-	{
-		var evr = check(value)
 
-		if (true === evr) { return value }
+	Name(validate, name)
 
-		Error.captureStackTrace(evr, validate)
+	/* TODO: consider def-prop */
+	var contract = validate
 
-		throw evr
-	}
+	contract.contract = 'yes'
+	contract.check = check
+	contract.is    = is
 
-	return validate
+	return contract
 }

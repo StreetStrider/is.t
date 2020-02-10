@@ -2,7 +2,7 @@
 import Contract from './Contract'
 
 
-export default Contract(value =>
+export default Contract('Iterable', value =>
 {
 	if (! is_iterable(value))
 	{
