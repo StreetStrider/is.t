@@ -18,6 +18,27 @@ export default function Contract (name, fn)
 	}
 
 
+	function cast (value, value_fallback)
+	{
+		validate(value_fallback)
+
+		if (is(value))
+		{
+			return value
+		}
+		else
+		{
+			return value_fallback
+		}
+	}
+
+
+	function is (value)
+	{
+		return (true === check(value))
+	}
+
+
 	function check (value)
 	{
 		var evr = fn(value)
@@ -53,20 +74,16 @@ export default function Contract (name, fn)
 	}
 
 
-	function is (value)
-	{
-		return (true === check(value))
-	}
-
-
 	Name(validate, name)
 
 	/* TODO: consider def-prop */
 	var contract = validate
 
 	contract.contract = 'yes'
-	contract.check = check
+
 	contract.is    = is
+	contract.check = check
+	contract.cast  = cast
 
 	return contract
 }
