@@ -11,7 +11,7 @@ export default function Wrong (code, message)
 	wrong.code     = code
 	wrong.message  = message
 	wrong.contract = null
-	wrong.due      = null
+	wrong.cause    = null
 
 	return wrong
 }

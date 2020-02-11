@@ -35,7 +35,7 @@ export default function Contract (name, fn)
 		if (evr instanceof Error)
 		{
 			var wrong = Wrong('bare_error', 'Bare Error occured while Contract checking')
-			wrong.due = evr
+			wrong.cause = evr
 		}
 		else if (typeof evr === 'string')
 		{
@@ -44,7 +44,7 @@ export default function Contract (name, fn)
 		else
 		{
 			var wrong = Wrong('unknown_violation', 'Unknown object occured while Contract checking')
-			wrong.due = evr
+			wrong.cause = evr
 		}
 
 		wrong.contract = contract
