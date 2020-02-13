@@ -3,6 +3,8 @@ import Name from 'function-name'
 
 import Wrong from './Wrong'
 
+var trait = Symbol('Contract')
+
 
 export default function Contract (name, fn)
 {
@@ -80,10 +82,17 @@ export default function Contract (name, fn)
 	var contract = validate
 
 	contract.contract = 'yes'
+	contract[trait]   = true
 
 	contract.is    = is
 	contract.check = check
 	contract.cast  = cast
 
 	return contract
+}
+
+
+Contract.is = (value) =>
+{
+	return (trait in Object(value))
 }
