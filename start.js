@@ -1,14 +1,12 @@
 
+import check from './check'
 import Iterable from './Iterable'
-
-
-console.log(Iterable)
 
 
 function concat (glue, seq)
 {
-	// seq = Iterable.cast(seq, [])
-	seq = Iterable(seq)
+	check(Iterable, seq)
+	check(String,   glue)
 
 	return [ ...seq ].join(glue)
 }
@@ -17,6 +15,7 @@ function concat (glue, seq)
 attempt(() => concat('/', [ 'a', 'b', 'c' ]))
 attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
 attempt(() => concat('/', {}))
+attempt(() => concat(101, [ 'a', 'b', 'c' ]))
 
 //
 function attempt (fn)
