@@ -1,5 +1,16 @@
 
-import String from './String'
+import Contract from './Contract'
+
+
+export var String = Contract('String', value =>
+{
+	if (typeof value !== 'string')
+	{
+		return 'must_be_string'
+	}
+
+	return true
+})
 
 
 export default new Map(
