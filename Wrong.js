@@ -2,6 +2,11 @@
 
 export default function Wrong (code, message)
 {
+	if (! message)
+	{
+		message = code
+	}
+
 	var wrong = new TypeError(message)
 
 	wrong.wrong  = 'yes'
@@ -9,7 +14,6 @@ export default function Wrong (code, message)
 	wrong.constructor = Wrong
 
 	wrong.code     = code
-	wrong.message  = message
 	wrong.contract = null
 	wrong.cause    = null
 
