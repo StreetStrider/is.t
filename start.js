@@ -1,6 +1,7 @@
 
 import check from './check'
 import Iterable from './Iterable'
+import Prop from './Prop'
 
 
 function concat (glue, seq)
@@ -12,10 +13,16 @@ function concat (glue, seq)
 }
 
 
-attempt(() => concat('/', [ 'a', 'b', 'c' ]))
-attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
-attempt(() => concat('/', {}))
-attempt(() => concat(101, [ 'a', 'b', 'c' ]))
+// attempt(() => concat('/', [ 'a', 'b', 'c' ]))
+// attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
+// attempt(() => concat('/', {}))
+// attempt(() => concat(101, [ 'a', 'b', 'c' ]))
+
+var prop_x = Prop('x')
+
+attempt(() => prop_x(1))
+attempt(() => prop_x({}))
+attempt(() => prop_x({ x: 1 }))
 
 //
 function attempt (fn)
@@ -24,9 +31,12 @@ function attempt (fn)
 	{
 		var r = fn()
 	}
-	catch (e)
+	catch (wrong)
 	{
-		console.error(e)
+		// console.error(wrong)
+		console.log(wrong)
+		console.warn(wrong.contract)
+		console.debug('cause:', wrong.cause)
 		return
 	}
 	{

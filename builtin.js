@@ -33,6 +33,27 @@ export var String = Contract('String', value =>
 })
 
 
+export var Object = Contract('Object', value =>
+{
+	if (value !== global.Object(value))
+	{
+		return 'must_be_object'
+	}
+
+	return true
+})
+
+export var Array = Contract('Array', value =>
+{
+	if (! global.Array.isArray(value))
+	{
+		return 'must_be_array'
+	}
+
+	return true
+})
+
+
 export default new Map(
 [
 	[ global.Boolean, Boolean ],
@@ -40,4 +61,7 @@ export default new Map(
 	[ global.String,  String ],
 
 	// [ global.Null, Null ],
+
+	[ global.Object, Object ],
+	[ global.Array,  Array ],
 ])

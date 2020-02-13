@@ -28,19 +28,25 @@ export default function Contract (name, fn)
 
 	function attest (value)
 	{
-		var evr = fn(value)
-
-		if (true === evr)
+		try
 		{
-			return true
+			var evr = fn(value)
+
+			if (evr === true)
+			{
+				return true
+			}
+		}
+		catch (e)
+		{
+			var evr = e
 		}
 
 		if (Wrong.is(evr))
 		{
-			return evr
+			var wrong = evr
 		}
-
-		if (evr instanceof Error)
+		else if (evr instanceof Error)
 		{
 			var wrong = Wrong('bare_error', 'Bare Error occured while Contract checking')
 			wrong.cause = evr
