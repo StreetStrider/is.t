@@ -20,21 +20,6 @@ export default function Contract (name, fn)
 	}
 
 
-	function cast (value, value_fallback)
-	{
-		check(value_fallback)
-
-		if (is(value))
-		{
-			return value
-		}
-		else
-		{
-			return value_fallback
-		}
-	}
-
-
 	function is (value)
 	{
 		return (true === attest(value))
@@ -86,7 +71,6 @@ export default function Contract (name, fn)
 
 	contract.is     = is
 	contract.attest = attest
-	contract.cast   = cast
 
 	return contract
 }
