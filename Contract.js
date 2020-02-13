@@ -8,13 +8,13 @@ var trait = Symbol('Contract')
 
 export default function Contract (name, fn)
 {
-	function validate (value)
+	function check (value)
 	{
-		var evr = check(value)
+		var evr = attest(value)
 
 		if (true === evr) { return value }
 
-		Error.captureStackTrace(evr, validate)
+		Error.captureStackTrace(evr, check)
 
 		throw evr
 	}
@@ -22,7 +22,7 @@ export default function Contract (name, fn)
 
 	function cast (value, value_fallback)
 	{
-		validate(value_fallback)
+		check(value_fallback)
 
 		if (is(value))
 		{
@@ -37,11 +37,11 @@ export default function Contract (name, fn)
 
 	function is (value)
 	{
-		return (true === check(value))
+		return (true === attest(value))
 	}
 
 
-	function check (value)
+	function attest (value)
 	{
 		var evr = fn(value)
 
@@ -76,17 +76,17 @@ export default function Contract (name, fn)
 	}
 
 
-	Name(validate, name)
+	Name(check, name)
 
 	/* TODO: consider def-prop */
-	var contract = validate
+	var contract = check
 
 	contract.contract = 'yes'
 	contract[trait]   = true
 
-	contract.is    = is
-	contract.check = check
-	contract.cast  = cast
+	contract.is     = is
+	contract.attest = attest
+	contract.cast   = cast
 
 	return contract
 }

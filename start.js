@@ -7,7 +7,8 @@ console.log(Iterable)
 
 function concat (glue, seq)
 {
-	seq = Iterable.cast(seq, [])
+	// seq = Iterable.cast(seq, [])
+	seq = Iterable(seq)
 
 	return [ ...seq ].join(glue)
 }
