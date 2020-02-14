@@ -15,7 +15,7 @@ check.as = (name, contract, value) =>
 	}
 	catch (wrong)
 	{
-		wrong.name    = name
+		wrong.for = name
 		wrong.message = ('`' + name + '`') + ' ' + wrong.message
 
 		throw wrong

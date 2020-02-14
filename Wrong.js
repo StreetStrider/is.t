@@ -15,9 +15,10 @@ export default function Wrong (code, message)
 	def(wrong, 'wrong', val(true, ':enum'))
 	def(wrong, trait, val(true))
 	def(wrong, 'constructor', val(Wrong))
+	def(wrong, 'name', val('Wrong'))
 
 	wrong.code  = code
-	wrong.name  = ''
+	wrong.for   = ''
 	wrong.cause = null
 
 	def(wrong, 'contract', val(null, ':write', ':enum'))
