@@ -5,6 +5,8 @@ import Wrong from './Wrong'
 
 var trait = Symbol('Contract')
 
+const v0 = void 0
+
 
 export default function Contract (name, fn)
 {
@@ -32,7 +34,7 @@ export default function Contract (name, fn)
 		{
 			var evr = fn(value)
 
-			if (evr === true)
+			if (evr === v0)
 			{
 				return true
 			}

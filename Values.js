@@ -12,6 +12,4 @@ export default Contract('Values', value =>
 	{
 		return 'must_have_values'
 	}
-
-	return true
 })

@@ -8,8 +8,6 @@ export default Contract('Iterable', value =>
 	{
 		return 'must_be_iterable'
 	}
-
-	return true
 })
 
 

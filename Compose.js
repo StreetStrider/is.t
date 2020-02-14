@@ -21,7 +21,5 @@ export default function Compose (...contracts)
 		{
 			check(C, value)
 		}
-
-		return true
 	})
 }

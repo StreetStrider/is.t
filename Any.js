@@ -2,4 +2,4 @@
 import Contract from './Contract'
 
 
-export default Contract('Any', () => true)
+export default Contract('Any', () => {})

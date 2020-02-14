@@ -8,9 +8,6 @@ var prop = Prop('length')
 
 export default Contract('Length', (value) =>
 {
-	prop(value)
-
+	check(prop, value)
 	check(Number, value.length)
-
-	return true
 })

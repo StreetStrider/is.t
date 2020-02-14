@@ -15,7 +15,5 @@ export default function Prop (name)
 
 			return wrong
 		}
-
-		return true
 	})
 }

@@ -8,8 +8,6 @@ export var Boolean = Contract('Boolean', value =>
 	{
 		return 'must_be_boolean'
 	}
-
-	return true
 })
 
 export var Number = Contract('Number', value =>
@@ -18,8 +16,6 @@ export var Number = Contract('Number', value =>
 	{
 		return 'must_be_number'
 	}
-
-	return true
 })
 
 export var String = Contract('String', value =>
@@ -28,8 +24,6 @@ export var String = Contract('String', value =>
 	{
 		return 'must_be_string'
 	}
-
-	return true
 })
 
 
@@ -39,8 +33,6 @@ export var Object = Contract('Object', value =>
 	{
 		return 'must_be_object'
 	}
-
-	return true
 })
 
 export var Array = Contract('Array', value =>
@@ -49,8 +41,6 @@ export var Array = Contract('Array', value =>
 	{
 		return 'must_be_array'
 	}
-
-	return true
 })
 
 
