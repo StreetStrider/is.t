@@ -12,11 +12,12 @@ export default function Wrong (code, message)
 
 	var wrong = new TypeError(message)
 
-	def(wrong, 'wrong', val('yes', ':enum'))
+	def(wrong, 'wrong', val(true, ':enum'))
 	def(wrong, trait, val(true))
 	def(wrong, 'constructor', val(Wrong))
 
 	wrong.code  = code
+	wrong.name  = ''
 	wrong.cause = null
 
 	def(wrong, 'contract', val(null, ':write', ':enum'))

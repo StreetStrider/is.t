@@ -9,8 +9,8 @@ var Seq  = Compose(Array,  Values)
 
 function concat (glue, seq)
 {
-	Seq(seq)
-	Glue(glue)
+	check.as('seq',  Seq,  seq)
+	check.as('glue', Glue, glue)
 
 	return [ ...seq ].join(glue)
 }

@@ -75,7 +75,7 @@ export default function Contract (name, fn)
 
 	var contract = check
 
-	def(contract, 'contract', val('yes', ':enum'))
+	def(contract, 'contract', val(true, ':enum'))
 	def(contract, trait, val(true))
 
 	def(contract, 'is', val(is))
