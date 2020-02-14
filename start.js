@@ -3,6 +3,7 @@ import check from './check'
 
 import Compose from './Compose'
 import Values  from './Values'
+import Tuple   from './Tuple'
 
 var Glue = Compose(String, Values)
 var Seq  = Compose(Array,  Values)
@@ -15,13 +16,21 @@ function concat (glue, seq)
 	return [ ...seq ].join(glue)
 }
 
+var Pair = Tuple([ String, Number ])
 
-attempt(() => concat('/', [ 'a', 'b', 'c' ]))
+attempt(() => Pair(0))
+attempt(() => Pair([  1,   2 ]))
+attempt(() => Pair([ '1', '2' ]))
+attempt(() => Pair([ '1',  2 ]))
+attempt(() => Pair([ 1 ]))
+attempt(() => Pair([ 1, 2, 3 ]))
+
+// attempt(() => concat('/', [ 'a', 'b', 'c' ]))
 // attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
-attempt(() => concat('/', {}))
-attempt(() => concat(101, [ 'a', 'b', 'c' ]))
-attempt(() => concat('/', []))
-attempt(() => concat('', [ 'a' ]))
+// attempt(() => concat('/', {}))
+// attempt(() => concat(101, [ 'a', 'b', 'c' ]))
+// attempt(() => concat('/', []))
+// attempt(() => concat('', [ 'a' ]))
 
 // var prop_x = Prop('x')
 // attempt(() => prop_x(1))
