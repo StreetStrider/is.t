@@ -9,6 +9,8 @@ export default function check (contract, value)
 
 check.as = (name, contract, value) =>
 {
+	check(String, name)
+
 	try
 	{
 		return check(contract, value)
