@@ -1,6 +1,7 @@
 
 import Contract from './Contract'
 import builtin  from './builtin'
+import Literal  from './Literal'
 
 
 export default function ack (contract)
@@ -17,8 +18,8 @@ export default function ack (contract)
 	{
 		return Contract(contract.name, contract)
 	}
-	else // TODO:
+	else
 	{
-		throw new TypeError
+		return Literal(contract)
 	}
 }
