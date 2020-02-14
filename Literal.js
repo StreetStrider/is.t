@@ -11,7 +11,11 @@ export default function Literal (value_literal)
 		{
 			var wrong = Wrong('must_be_exact_value')
 
-			wrong.cause = value_literal
+			wrong.detail =
+			{
+				expected: value_literal,
+				actual:   value,
+			}
 
 			return wrong
 		}

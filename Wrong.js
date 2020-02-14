@@ -17,11 +17,13 @@ export default function Wrong (code, message)
 	def(wrong, 'constructor', val(Wrong))
 	def(wrong, 'name', val('Wrong'))
 
-	wrong.code  = code
-	wrong.for   = ''
-	wrong.cause = null
-
 	def(wrong, 'contract', val(null, ':write', ':enum'))
+
+	wrong.code   = code
+	wrong.for    = ''
+	wrong.detail = null
+
+	wrong.cause  = null
 
 	return wrong
 }

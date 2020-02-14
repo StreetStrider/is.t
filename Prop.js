@@ -11,7 +11,7 @@ export default function Prop (name)
 		{
 			var wrong = Wrong('must_contain_prop')
 
-			wrong.cause = name
+			wrong.detail = { prop: name }
 
 			return wrong
 		}

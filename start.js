@@ -4,6 +4,7 @@ import check from './check'
 import Compose from './Compose'
 import Values  from './Values'
 import Tuple   from './Tuple'
+import Prop    from './Prop'
 
 var Glue = Compose(String, Values)
 var Seq  = Compose(Array,  Values)
@@ -19,10 +20,10 @@ function concat (glue, seq)
 var Pair = Tuple([ String, Number ])
 
 attempt(() => Pair(0))
-attempt(() => Pair([  1,   2 ]))
+// attempt(() => Pair([  1,   2 ]))
 attempt(() => Pair([ '1', '2' ]))
-attempt(() => Pair([ '1',  2 ]))
-attempt(() => Pair([ 1 ]))
+// attempt(() => Pair([ '1',  2 ]))
+// attempt(() => Pair([ 1 ]))
 attempt(() => Pair([ 1, 2, 3 ]))
 
 // attempt(() => concat('/', [ 'a', 'b', 'c' ]))
@@ -32,8 +33,8 @@ attempt(() => Pair([ 1, 2, 3 ]))
 // attempt(() => concat('/', []))
 // attempt(() => concat('', [ 'a' ]))
 
-// var prop_x = Prop('x')
-// attempt(() => prop_x(1))
+var prop_x = Prop('x')
+attempt(() => prop_x(1))
 // attempt(() => prop_x({}))
 // attempt(() => prop_x({ x: 1 }))
 
