@@ -15,6 +15,9 @@
   "dependencies":
   {
     "function-name":
+      "2",
+
+    "def-prop":
       "2"
   },
 

@@ -1,4 +1,7 @@
 
+import def from 'def-prop'
+import val from 'def-prop/val'
+
 import Name from 'function-name'
 
 import Wrong from './Wrong'
@@ -10,6 +13,7 @@ const v0 = void 0
 
 export default function Contract (name, fn)
 {
+	Name(check, name)
 	function check (value)
 	{
 		var evr = attest(value)
@@ -69,16 +73,13 @@ export default function Contract (name, fn)
 	}
 
 
-	Name(check, name)
-
-	/* TODO: consider def-prop */
 	var contract = check
 
-	contract.contract = 'yes'
-	contract[trait]   = true
+	def(contract, 'contract', val('yes', ':enum'))
+	def(contract, trait, val(true))
 
-	contract.is     = is
-	contract.attest = attest
+	def(contract, 'is', val(is))
+	def(contract, 'attest', val(attest))
 
 	return contract
 }

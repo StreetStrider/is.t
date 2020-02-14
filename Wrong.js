@@ -1,4 +1,7 @@
 
+import def from 'def-prop'
+import val from 'def-prop/val'
+
 
 export default function Wrong (code, message)
 {
@@ -9,13 +12,14 @@ export default function Wrong (code, message)
 
 	var wrong = new TypeError(message)
 
-	wrong.wrong  = 'yes'
-	wrong[trait] = true
-	wrong.constructor = Wrong
+	def(wrong, 'wrong', val('yes', ':enum'))
+	def(wrong, trait, val(true))
+	def(wrong, 'constructor', val(Wrong))
 
-	wrong.code     = code
-	wrong.contract = null
-	wrong.cause    = null
+	wrong.code  = code
+	wrong.cause = null
+
+	def(wrong, 'contract', val(null, ':write', ':enum'))
 
 	return wrong
 }
