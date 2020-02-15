@@ -29,7 +29,7 @@ export default function Wrong (code, message)
 }
 
 
-var trait = Symbol('Wrong')
+const trait = Symbol('Wrong')
 
 Wrong.is = (value) =>
 {

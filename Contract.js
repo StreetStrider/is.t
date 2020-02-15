@@ -6,7 +6,7 @@ import Name from 'function-name'
 
 import Wrong from './Wrong'
 
-var trait = Symbol('Contract')
+const trait = Symbol('Contract')
 
 const v0 = void 0
 
