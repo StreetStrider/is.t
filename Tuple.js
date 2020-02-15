@@ -6,7 +6,7 @@ import Wrong    from './Wrong'
 
 export default function Tuple (tuple)
 {
-	check(Array, tuple)
+	check.as('tuple', Array, tuple)
 
 	return Contract('Tuple', value =>
 	{
