@@ -1,13 +1,12 @@
 
-import Prop from './Prop'
+import PropType from './PropType'
 import Contract from './Contract'
-import check from './check'
+import check    from './check'
 
 
-var prop = Prop('length')
+var prop = PropType('length', Number)
 
 export default Contract('Length', (value) =>
 {
 	check(prop, value)
-	check(Number, value.length)
 })
