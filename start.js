@@ -3,8 +3,9 @@ import check from './check'
 
 import Compose from './Compose'
 import Values  from './Values'
-import Tuple   from './Tuple'
 import Prop    from './Prop'
+import Tuple   from './Tuple'
+import Record  from './Record'
 import Length  from './Length'
 
 var Glue = Compose(String, Values)
@@ -40,7 +41,15 @@ var Pair = Tuple([ String, Number ])
 // attempt(() => prop_x({}))
 // attempt(() => prop_x({ x: 1 }))
 
-attempt(() => check.as('x', Length, { length: true }))
+var Pt = Record({ x: Number, y: Number, point: true })
+
+attempt(() => check.as('some_point', Pt, 1))
+attempt(() => check.as('some_point', Pt, {}))
+attempt(() => check.as('some_point', Pt, { x: 1 }))
+attempt(() => check.as('some_point', Pt, { x: 1, y: 'a' }))
+attempt(() => check.as('some_point', Pt, { x: 1, y: 2 }))
+attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: false }))
+attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
 
 //
 function attempt (fn)
