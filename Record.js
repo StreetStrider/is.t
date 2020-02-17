@@ -16,7 +16,7 @@ export default function Record (record)
 
 		for (let key in record)
 		{
-			check.as(key, record[key], value)
+			check(record[key], value)
 		}
 	})
 }

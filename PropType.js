@@ -11,6 +11,6 @@ export default function PropType (name, type)
 	return Contract('PropType', value =>
 	{
 		check(prop, value)
-		check(type, value[name])
+		check.as(name, type, value[name])
 	})
 }
