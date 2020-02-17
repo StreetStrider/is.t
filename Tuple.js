@@ -14,7 +14,15 @@ export default function Tuple (tuple)
 
 		if (value.length !== tuple.length)
 		{
-			return 'must_have_same_length'
+			var wrong = Wrong('must_have_same_length', 'Tuple of another length passed')
+
+			wrong.detail =
+			{
+				expected: tuple.length,
+				actual: value.length,
+			}
+
+			return wrong
 		}
 
 		var L = tuple.length

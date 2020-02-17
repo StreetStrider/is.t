@@ -19,14 +19,16 @@ function concat (glue, seq)
 	return [ ...seq ].join(glue)
 }
 
+//*
 var Pair = Tuple([ String, Number ])
 
-// attempt(() => Pair(0))
-// attempt(() => Pair([  1,   2 ]))
-// attempt(() => Pair([ '1', '2' ]))
-// attempt(() => Pair([ '1',  2 ]))
-// attempt(() => Pair([ 1 ]))
-// attempt(() => Pair([ 1, 2, 3 ]))
+attempt(() => check.as('some_tuple', Pair, 0))
+attempt(() => check.as('some_tuple', Pair, [  1,   2 ]))
+attempt(() => check.as('some_tuple', Pair, [ '1', '2' ]))
+attempt(() => check.as('some_tuple', Pair, [ '1',  2 ]))
+attempt(() => check.as('some_tuple', Pair, [ 1 ]))
+attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
+//*/
 
 // attempt(() => concat('/', [ 'a', 'b', 'c' ]))
 // attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
@@ -41,6 +43,7 @@ var Pair = Tuple([ String, Number ])
 // attempt(() => prop_x({}))
 // attempt(() => prop_x({ x: 1 }))
 
+/*
 var Pt = Record({ x: Number, y: Number, point: true })
 
 attempt(() => check.as('some_point', Pt, 1))
@@ -50,6 +53,7 @@ attempt(() => check.as('some_point', Pt, { x: 1, y: 'a' }))
 attempt(() => check.as('some_point', Pt, { x: 1, y: 2 }))
 attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: false }))
 attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
+//*/
 
 //
 function attempt (fn)
@@ -60,13 +64,13 @@ function attempt (fn)
 	}
 	catch (wrong)
 	{
-		// console.error(wrong)
 		console.log(wrong)
+		// console.error(wrong)
 		// console.warn(wrong.contract)
 		// console.debug('cause:', wrong.cause)
 		return
 	}
 	{
-		console.log(r)
+		console.info(r)
 	}
 }
