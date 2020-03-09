@@ -37,7 +37,7 @@ export default function Tuple (tuple)
 			}
 			catch (following)
 			{
-				let wrong = Wrong('type_mismatch_at_pos', 'Type mismatch at specific position in tuple')
+				let wrong = Wrong('must_have_type_at_pos', 'Type mismatch at specific position in tuple')
 
 				wrong.detail = { pos: n }
 				wrong.cause  = following
