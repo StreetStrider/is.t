@@ -1,6 +1,6 @@
 
+import check    from './check'
 import Contract from './Contract'
-import check from './check'
 import Wrong    from './Wrong'
 
 

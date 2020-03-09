@@ -1,6 +1,6 @@
 
-import Contract from './Contract'
 import Any from './Any'
+import Contract from './Contract'
 import check from './check'
 
 
