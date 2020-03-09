@@ -1,3 +1,4 @@
+/* @primitive */
 
 import check    from './check'
 import Iterable from './Iterable'

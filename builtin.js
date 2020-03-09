@@ -1,3 +1,4 @@
+/* @primitive */
 
 import Contract from './Contract'
 
