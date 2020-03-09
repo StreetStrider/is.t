@@ -1,3 +1,4 @@
+/* @composite */
 
 import PropType from './PropType'
 import Contract from './Contract'

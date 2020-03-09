@@ -1,3 +1,4 @@
+/* @composite */
 
 import check    from './check'
 import Contract from './Contract'

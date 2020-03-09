@@ -1,3 +1,4 @@
+/* @composite */
 
 import Any from './Any'
 import Contract from './Contract'
