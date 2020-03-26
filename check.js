@@ -9,46 +9,28 @@ export default function check (contract, value)
 }
 
 
+import attempt from './attempt'
+
 check.as = (name, contract, value) =>
 {
 	check(String, name)
 
-	return decorate(contract, value, wrong =>
-	{
-		wrong.for = compose(name, wrong.for)
-		// wrong.message = ('`' + wrong.for + '`') + ' ' + wrong.message
-
-		throw wrong
-	})
+	return attempt(
+		()      => { return check(contract, value) },
+		(wrong) => {  throw partof(wrong, name) },
+	)
 }
 
-
-function decorate (contract, value, handle)
+function partof (wrong, name)
 {
-	try
+	if (! wrong.for)
 	{
-		return check(contract, value)
-	}
-	catch (wrong)
-	{
-		if (Wrong.is(wrong))
-		{
-			wrong = handle(wrong)
-		}
-
-		throw wrong
-	}
-}
-
-
-function compose (name_new, name)
-{
-	if (! name)
-	{
-		return name_new
+		wrong.for = name
 	}
 	else
 	{
-		return (name_new + '/' + name)
+		wrong.for = (name + '/' + wrong.for)
 	}
+
+	return wrong
 }

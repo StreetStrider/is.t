@@ -20,7 +20,7 @@ function concat (glue, seq)
 	return [ ...seq ].join(glue)
 }
 
-//*
+/*
 var ternary = Enum([ null, true, false ])
 attempt(() => check.as('some_enum', ternary, 0))
 attempt(() => check.as('some_enum', ternary, 1))
@@ -43,7 +43,7 @@ attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 // attempt(() => concat('/', [ 'a', 'b', 'c' ]))
 // attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
 // attempt(() => concat('/', {}))
-// attempt(() => concat(101, [ 'a', 'b', 'c' ]))
+attempt(() => concat(101, [ 'a', 'b', 'c' ]))
 // attempt(() => concat('/', []))
 // attempt(() => concat('', [ 'a' ]))
 // attempt(() => concat('/', {}))
