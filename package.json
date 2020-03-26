@@ -9,7 +9,7 @@
 
   "scripts":
   {
-    "start": "node -r esm -r console-ultimate start"
+    "test": "node -r esm -r console-ultimate start"
   },
 
   "dependencies":
