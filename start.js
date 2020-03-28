@@ -1,13 +1,14 @@
 
 import check from './check'
 
-import Compose from './Compose'
-import Values  from './Values'
-import Prop    from './Prop'
-import Tuple   from './Tuple'
-import Record  from './Record'
-import Enum    from './Enum'
-import Length  from './Length'
+import Compose  from './Compose'
+import Values   from './Values'
+import Prop     from './Prop'
+import PropType from './PropType'
+import Tuple    from './Tuple'
+import Record   from './Record'
+import Enum     from './Enum'
+import Length   from './Length'
 
 var Glue = Compose(String, Values)
 var Seq  = Compose(Array,  Values)
@@ -43,15 +44,25 @@ attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 // attempt(() => concat('/', [ 'a', 'b', 'c' ]))
 // attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
 // attempt(() => concat('/', {}))
-attempt(() => concat(101, [ 'a', 'b', 'c' ]))
+// attempt(() => concat(101, [ 'a', 'b', 'c' ]))
 // attempt(() => concat('/', []))
 // attempt(() => concat('', [ 'a' ]))
 // attempt(() => concat('/', {}))
 
-// var prop_x = Prop('x')
-// attempt(() => prop_x(1))
-// attempt(() => prop_x({}))
-// attempt(() => prop_x({ x: 1 }))
+/*
+var prop_x = Prop('x')
+attempt(() => check.as('foobar', prop_x, 1))
+attempt(() => check.as('foobar', prop_x, {}))
+attempt(() => check.as('foobar', prop_x, { x: 1 }))
+//*/
+
+//*
+var prop_x_number = PropType('x', Number)
+attempt(() => check.as('foobar', prop_x_number, 1))
+attempt(() => check.as('foobar', prop_x_number, {}))
+attempt(() => check.as('foobar', prop_x_number, { x: '1' }))
+attempt(() => check.as('foobar', prop_x_number, { x: 1 }))
+//*/
 
 /*
 var Pt = Record({ x: Number, y: Number, point: true })

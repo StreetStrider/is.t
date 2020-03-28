@@ -3,6 +3,7 @@
 import Prop     from './Prop'
 import Contract from './Contract'
 import check    from './check'
+import Wrong    from './Wrong'
 
 
 export default function PropType (name, type)
@@ -12,6 +13,18 @@ export default function PropType (name, type)
 	return Contract('PropType', value =>
 	{
 		check(prop, value)
-		check.as(name, type, value[name])
+		check.cause(type, value[name], () =>
+		{
+			var wrong = Wrong('violate_type')
+
+			wrong.detail =
+			{
+				prop: name,
+				value: value[name],
+				type,
+			}
+
+			return wrong
+		})
 	})
 }
