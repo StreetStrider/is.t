@@ -44,6 +44,14 @@ export var Array = Contract('Array', value =>
 	}
 })
 
+export var Function = Contract('Function', value =>
+{
+	if (typeof value !== 'function')
+	{
+		return 'must_be_function'
+	}
+})
+
 
 export default new Map(
 [
@@ -55,4 +63,5 @@ export default new Map(
 
 	[ global.Object, Object ],
 	[ global.Array,  Array ],
+	[ global.Function, Function ],
 ])
