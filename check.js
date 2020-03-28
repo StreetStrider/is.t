@@ -34,3 +34,19 @@ function partof (wrong, name)
 
 	return wrong
 }
+
+
+check.cause = (contract, value, sub_fn) =>
+{
+	check.as('sub_fn', Function, sub_fn)
+
+	return attempt(() => { return check(contract, value) },
+	(cause) =>
+	{
+		var wrong = sub_fn(cause)
+
+		wrong.cause = cause
+
+		throw wrong
+	})
+}
