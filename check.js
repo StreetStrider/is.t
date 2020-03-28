@@ -40,13 +40,17 @@ check.cause = (contract, value, sub_fn) =>
 {
 	check.as('sub_fn', Function, sub_fn)
 
-	return attempt(() => { return check(contract, value) },
-	(cause) =>
-	{
-		var wrong = sub_fn(cause)
+	return attempt(
+		()      => { return check(contract, value) },
+		(cause) => { throw caused(sub_fn, cause) },
+	)
+}
 
-		wrong.cause = cause
+function caused (sub_fn, cause)
+{
+	var wrong = sub_fn(cause)
 
-		throw wrong
-	})
+	wrong.cause = cause
+
+	return wrong
 }
