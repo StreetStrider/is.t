@@ -13,22 +13,25 @@ const v0 = void 0
 
 export default function Contract (name, fn)
 {
+	var contract = check
+
 	Name(check, name)
+
 	function check (value)
 	{
-		var evr = attest(value)
+		var wrong = attest(value)
 
-		if (true === evr) { return value }
+		if (wrong === v0) { return value }
 
-		Error.captureStackTrace(evr, check)
+		Error.captureStackTrace(wrong, check)
 
-		throw evr
+		throw wrong
 	}
 
 
 	function is (value)
 	{
-		return (true === attest(value))
+		return (attest(value) === v0)
 	}
 
 
@@ -40,7 +43,7 @@ export default function Contract (name, fn)
 
 			if (evr === v0)
 			{
-				return true
+				return
 			}
 		}
 		catch (e)
@@ -50,6 +53,7 @@ export default function Contract (name, fn)
 
 		if (Wrong.is(evr))
 		{
+			/* @mutable */
 			var wrong = evr
 		}
 		else if (evr instanceof Error)
@@ -67,13 +71,12 @@ export default function Contract (name, fn)
 			wrong.cause = evr
 		}
 
+		/* @mutable */
 		wrong.contract = contract
 
 		return wrong
 	}
 
-
-	var contract = check
 
 	def(contract, 'contract', val(true, ':enum'))
 	def(contract, trait, val(true))
