@@ -3,14 +3,11 @@ import def from 'def-prop'
 import val from 'def-prop/val'
 
 
-export default function Wrong (code, message)
+export default function Wrong (code, options)
 {
-	if (! message)
-	{
-		message = code
-	}
+	options || (options = {})
 
-	var wrong = new TypeError(message)
+	var wrong = new TypeError(String(code))
 
 	def(wrong, 'wrong', val(true, ':enum'))
 	def(wrong, trait, val(true))
@@ -24,6 +21,7 @@ export default function Wrong (code, message)
 	wrong.detail = null
 
 	wrong.cause  = null
+	wrong.description = (options.description || '')
 
 	return wrong
 }

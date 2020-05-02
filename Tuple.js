@@ -15,7 +15,7 @@ export default function Tuple (tuple)
 
 		if (value.length !== tuple.length)
 		{
-			var wrong = Wrong('must_have_same_length', 'Tuple of another length passed')
+			var wrong = Wrong('must_have_same_length', { description: 'Tuple of another length passed' })
 
 			wrong.detail =
 			{
@@ -38,7 +38,7 @@ export default function Tuple (tuple)
 			}
 			catch (following)
 			{
-				let wrong = Wrong('must_have_type_at_pos', 'Type mismatch at specific position in tuple')
+				let wrong = Wrong('must_have_type_at_pos', { description: 'Type mismatch at specific position in tuple' })
 
 				wrong.detail = { pos: n }
 				wrong.cause  = following
