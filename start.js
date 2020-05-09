@@ -9,9 +9,12 @@ import Tuple    from './Tuple'
 import Record   from './Record'
 import Enum     from './Enum'
 import Length   from './Length'
+import Assert   from './Assert'
 
 var Glue = Compose(String, Values)
 var Seq  = Compose(Array,  Values)
+
+var assert = Assert('that condition must be true')
 
 function concat (glue, seq)
 {
@@ -20,6 +23,8 @@ function concat (glue, seq)
 
 	return [ ...seq ].join(glue)
 }
+
+attempt(() => check.as('some_value', assert, false))
 
 /*
 var ternary = Enum([ null, true, false ])
@@ -30,7 +35,7 @@ attempt(() => check.as('some_enum', ternary, false))
 attempt(() => check.as('some_enum', ternary, null))
 //*/
 
-//*
+/*
 var Pair = Tuple([ String, Number ])
 
 attempt(() => check.as('some_tuple', Pair, 0))
