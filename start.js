@@ -1,4 +1,9 @@
 
+process.on('uncaughtException', (error) =>
+{
+	console.log(error)
+})
+
 import check from './check'
 
 import Compose  from './Compose'
@@ -84,6 +89,10 @@ attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
 //
 function attempt (fn)
 {
+	var r = fn()
+	console.info(r)
+
+	/*
 	try
 	{
 		var r = fn()
@@ -99,4 +108,5 @@ function attempt (fn)
 	{
 		console.info(r)
 	}
+	*/
 }
