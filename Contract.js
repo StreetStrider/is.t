@@ -39,37 +39,20 @@ export default function Contract (name, fn)
 	{
 		try
 		{
-			var evr = fn(value)
+			var evaluation = fn(value)
 
-			if (evr === v0)
+			if (evaluation === v0)
 			{
 				return
 			}
 		}
 		catch (e)
 		{
-			var evr = e
+			var evaluation = e
 		}
 
-		if (Wrong.is(evr))
-		{
-			/* @mutable */
-			var wrong = evr
-		}
-		else if (evr instanceof Error)
-		{
-			var wrong = Wrong('bare_error', { description: 'Bare Error occured while Contract checking' })
-			wrong.cause = evr
-		}
-		else if (typeof evr === 'string')
-		{
-			var wrong = Wrong(evr)
-		}
-		else
-		{
-			var wrong = Wrong('unknown_violation', { description: 'Unknown object occured while Contract checking' })
-			wrong.cause = evr
-		}
+		/* @mutable */
+		var wrong = Wrong.cast(evaluation)
 
 		/* @mutable */
 		wrong.contract = contract

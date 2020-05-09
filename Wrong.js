@@ -33,3 +33,28 @@ Wrong.is = (value) =>
 {
 	return (trait in Object(value))
 }
+
+
+Wrong.cast = (value) =>
+{
+	if (Wrong.is(value))
+	{
+		return value
+	}
+	else if (value instanceof Error)
+	{
+		var wrong = Wrong('bare_error')
+		wrong.cause = value
+		return wrong
+	}
+	else if (typeof value === 'string')
+	{
+		return Wrong(value)
+	}
+	else
+	{
+		var wrong = Wrong('unknown_violation')
+		wrong.cause = value
+		return wrong
+	}
+}
