@@ -1,9 +1,4 @@
 
-process.on('uncaughtException', (error) =>
-{
-	console.log(error)
-})
-
 import check from './check'
 
 import Compose  from './Compose'
@@ -40,15 +35,15 @@ attempt(() => check.as('some_enum', ternary, false))
 attempt(() => check.as('some_enum', ternary, null))
 //*/
 
-/*
+//*
 var Pair = Tuple([ String, Number ])
 
-attempt(() => check.as('some_tuple', Pair, 0))
+// attempt(() => check.as('some_tuple', Pair, 0))
 attempt(() => check.as('some_tuple', Pair, [  1,   2 ]))
-attempt(() => check.as('some_tuple', Pair, [ '1', '2' ]))
-attempt(() => check.as('some_tuple', Pair, [ '1',  2 ]))
-attempt(() => check.as('some_tuple', Pair, [ 1 ]))
-attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
+// attempt(() => check.as('some_tuple', Pair, [ '1', '2' ]))
+// attempt(() => check.as('some_tuple', Pair, [ '1',  2 ]))
+// attempt(() => check.as('some_tuple', Pair, [ 1 ]))
+// attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 //*/
 
 // attempt(() => concat('/', [ 'a', 'b', 'c' ]))
@@ -87,19 +82,19 @@ attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
 //*/
 
 //
+import Wrong from './Wrong'
+
 function attempt (fn)
 {
-	var r = fn()
-	console.info(r)
-
-	/*
 	try
 	{
 		var r = fn()
 	}
 	catch (wrong)
 	{
+		// process.stdout.write(Wrong.pretty(wrong))
 		console.log(wrong)
+		// console.log(Wrong.cleanup(wrong))
 		// console.error(wrong)
 		// console.warn(wrong.contract)
 		// console.debug('cause:', wrong.cause)
@@ -108,5 +103,4 @@ function attempt (fn)
 	{
 		console.info(r)
 	}
-	*/
 }
