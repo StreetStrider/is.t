@@ -15,7 +15,7 @@ export default function PropType (name, type)
 		check(prop, value)
 		check.cause(type, value[name], () =>
 		{
-			var wrong = Wrong('violate_type_in_prop')
+			var wrong = Wrong('must_have_type_in_prop', { description: 'Type mismatch in specific property in object' })
 
 			wrong.detail =
 			{

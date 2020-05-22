@@ -32,19 +32,19 @@ export default function Tuple (tuple)
 		{
 			let C = tuple[n]
 
-			try
-			{
-				check(C, value[n])
-			}
-			catch (following)
+			check.cause(C, value[n], () =>
 			{
 				let wrong = Wrong('must_have_type_at_pos', { description: 'Type mismatch at specific position in tuple' })
 
-				wrong.detail = { pos: n }
-				wrong.cause  = following
+				wrong.detail =
+				{
+					pos: n,
+					value: value[n],
+					expected: C,
+				}
 
-				throw wrong
-			}
+				return wrong
+			})
 		}
 	})
 }

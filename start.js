@@ -38,7 +38,7 @@ attempt(() => check.as('some_enum', ternary, null))
 //*
 var Pair = Tuple([ String, Number ])
 
-/*
+//*
 attempt(() => check.as('some_tuple', Pair, 0))
 attempt(() => check.as('some_tuple', Pair, [  1,   2 ]))
 attempt(() => check.as('some_tuple', Pair, [ '1', '2' ]))
@@ -62,7 +62,7 @@ attempt(() => check.as('foobar', prop_x, {}))
 attempt(() => check.as('foobar', prop_x, { x: 1 }))
 //*/
 
-//*
+/*
 var prop_x_number = PropType('x', Number)
 attempt(() => check.as('foobar', prop_x_number, 1))
 attempt(() => check.as('foobar', prop_x_number, {}))
