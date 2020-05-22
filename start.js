@@ -24,7 +24,14 @@ function concat (glue, seq)
 	return [ ...seq ].join(glue)
 }
 
-attempt(() => check.as('some_value', assert, false))
+//*
+attempt(() => check.as('some_value', Length, {}))
+attempt(() => check.as('some_value', Length, { length: 'x' }))
+attempt(() => check.as('some_value', Length, []))
+attempt(() => check.as('some_value', Length, { length: 1 }))
+//*/
+
+// attempt(() => check.as('some_value', assert, false))
 
 /*
 var ternary = Enum([ null, true, false ])
@@ -38,7 +45,7 @@ attempt(() => check.as('some_enum', ternary, null))
 //*
 var Pair = Tuple([ String, Number ])
 
-//*
+/*
 attempt(() => check.as('some_tuple', Pair, 0))
 attempt(() => check.as('some_tuple', Pair, [  1,   2 ]))
 attempt(() => check.as('some_tuple', Pair, [ '1', '2' ]))
