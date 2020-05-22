@@ -15,13 +15,13 @@ export default function PropType (name, type)
 		check(prop, value)
 		check.cause(type, value[name], () =>
 		{
-			var wrong = Wrong('violate_type')
+			var wrong = Wrong('violate_type_in_prop')
 
 			wrong.detail =
 			{
 				prop: name,
 				value: value[name],
-				type,
+				expected: type,
 			}
 
 			return wrong
