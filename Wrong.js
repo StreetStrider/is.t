@@ -3,11 +3,22 @@ import def from 'def-prop'
 import val from 'def-prop/val'
 
 
+const trait = Symbol('Wrong')
+
+
 export default function Wrong (code, options)
 {
-	options || (options = {})
+	if (is_object(code))
+	{
+		options = { ...code }
+	}
+	else
+	{
+		options = { code, ...options }
+	}
+	code = String(options.code)
 
-	var wrong = new TypeError(String(code))
+	var wrong = new TypeError(code)
 
 	def(wrong, 'wrong', val(true, ':enum'))
 	def(wrong, trait, val(true))
@@ -27,8 +38,6 @@ export default function Wrong (code, options)
 }
 
 
-const trait = Symbol('Wrong')
-
 Wrong.is = (value) =>
 {
 	return (trait in Object(value))
@@ -47,6 +56,10 @@ Wrong.cast = (value) =>
 		wrong.cause = value
 		return wrong
 	}
+	else if (is_object(value))
+	{
+		return Wrong(value)
+	}
 	else if (typeof value === 'string')
 	{
 		return Wrong(value)
@@ -57,4 +70,10 @@ Wrong.cast = (value) =>
 		wrong.cause = value
 		return wrong
 	}
+}
+
+
+function is_object (value)
+{
+	return (Object(value) === value)
 }
