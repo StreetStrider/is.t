@@ -3,6 +3,7 @@
 import Contract from './Contract'
 
 const code = 'must_be_exact_value'
+const description = 'Literal value expected'
 
 
 export default function Literal (value_literal)
@@ -17,7 +18,7 @@ export default function Literal (value_literal)
 				actual:   value,
 			}
 
-			return { code, detail }
+			return { code, description, detail }
 		}
 	})
 }

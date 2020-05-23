@@ -1,15 +1,20 @@
 /* @primitive */
 
+import check    from './check'
 import Contract from './Contract'
-import Wrong    from './Wrong'
+
+const code = 'violate_assert'
+
 
 export default function Assert (description)
 {
+	check.as('description', String, description)
+
 	return Contract('Assert', value =>
 	{
 		if (! value)
 		{
-			return Wrong('violate_assert', { description })
+			return { code, description }
 		}
 	})
 }

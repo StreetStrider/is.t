@@ -14,7 +14,7 @@ import Assert   from './Assert'
 var Glue = Compose(String, Values)
 var Seq  = Compose(Array,  Values)
 
-var assert = Assert('that condition must be true')
+var assert = Assert('That condition must be true')
 
 function concat (glue, seq)
 {
@@ -25,6 +25,7 @@ function concat (glue, seq)
 }
 
 attempt(() => check.as('some_value', 1, 2))
+attempt(() => check.as('some_value', assert, false))
 
 /*
 attempt(() => check.as('some_value', Length, {}))
@@ -33,7 +34,6 @@ attempt(() => check.as('some_value', Length, []))
 attempt(() => check.as('some_value', Length, { length: 1 }))
 //*/
 
-// attempt(() => check.as('some_value', assert, false))
 
 /*
 var ternary = Enum([ null, true, false ])
