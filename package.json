@@ -9,7 +9,9 @@
 
   "scripts":
   {
-    "test": "node -r esm -r console-ultimate start"
+      "st": "eslint .",
+     "try": "node -r esm -r console-ultimate start",
+    "test": "npm run st && npm run try"
   },
 
   "dependencies":
@@ -27,6 +29,15 @@
       "3",
 
     "console-ultimate":
-      "3"
+      "3",
+
+    "eslint":
+      "7",
+
+    "js-outlander":
+      "StrangeTransistor/js-outlander#2.7.0",
+
+    "eslint-plugin-node":
+      "11"
   }
 }

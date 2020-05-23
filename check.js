@@ -1,6 +1,5 @@
 
 import ack   from './ack'
-import Wrong from './Wrong'
 
 
 export default function check (contract, value)
