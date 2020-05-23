@@ -35,7 +35,7 @@ attempt(() => check.as('some_value', Length, { length: 1 }))
 //*/
 
 
-/*
+//*
 var ternary = Enum([ null, true, false ])
 attempt(() => check.as('some_enum', ternary, 0))
 attempt(() => check.as('some_enum', ternary, 1))

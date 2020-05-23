@@ -3,7 +3,9 @@
 import check    from './check'
 import Iterable from './Iterable'
 import Contract from './Contract'
-import Wrong    from './Wrong'
+
+const code = 'must_be_one_of'
+const description = 'One of specific values expected'
 
 
 export default function Enum (seq)
@@ -17,11 +19,9 @@ export default function Enum (seq)
 	{
 		if (! whitelist.has(value))
 		{
-			var wrong = Wrong('must_be_one_of')
+			var detail = { allowed }
 
-			wrong.detail = { allowed }
-
-			return wrong
+			return { code, description, detail }
 		}
 	})
 }
