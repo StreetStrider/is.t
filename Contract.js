@@ -21,43 +21,34 @@ export default function Contract (name, fn)
 	{
 		var wrong = attest(value)
 
-		if (wrong === v0) { return value }
+		if (wrong === v0)
+		{
+			return value
+		}
 
+		/* @mutable */
+		wrong = Wrong.cast(wrong)
 		Error.captureStackTrace(wrong, check)
+		wrong.contract = contract
 
 		throw wrong
 	}
-
 
 	function is (value)
 	{
 		return (attest(value) === v0)
 	}
 
-
 	function attest (value)
 	{
 		try
 		{
-			var evaluation = fn(value)
-
-			if (evaluation === v0)
-			{
-				return
-			}
+			return fn(value)
 		}
-		catch (e)
+		catch (error)
 		{
-			var evaluation = e
+			return error
 		}
-
-		/* @mutable */
-		var wrong = Wrong.cast(evaluation)
-
-		/* @mutable */
-		wrong.contract = contract
-
-		return wrong
 	}
 
 

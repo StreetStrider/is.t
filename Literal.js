@@ -1,7 +1,8 @@
 /* @primitive */
 
 import Contract from './Contract'
-import Wrong    from './Wrong'
+
+const code = 'must_be_exact_value'
 
 
 export default function Literal (value_literal)
@@ -10,15 +11,13 @@ export default function Literal (value_literal)
 	{
 		if (value !== value_literal)
 		{
-			var wrong = Wrong('must_be_exact_value')
-
-			wrong.detail =
+			var detail =
 			{
 				expected: value_literal,
 				actual:   value,
 			}
 
-			return wrong
+			return { code, detail }
 		}
 	})
 }

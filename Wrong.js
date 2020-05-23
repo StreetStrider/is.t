@@ -16,6 +16,7 @@ export default function Wrong (code, options)
 	{
 		options = { code, ...options }
 	}
+
 	code = String(options.code)
 
 	var wrong = new TypeError(code)
@@ -29,7 +30,7 @@ export default function Wrong (code, options)
 
 	wrong.code   = code
 	wrong.for    = ''
-	wrong.detail = null
+	wrong.detail = (options.detail || null)
 
 	wrong.cause  = null
 	wrong.description = (options.description || '')
@@ -48,6 +49,7 @@ Wrong.cast = (value) =>
 {
 	if (Wrong.is(value))
 	{
+		/* @mutable */
 		return value
 	}
 	else if (value instanceof Error)

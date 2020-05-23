@@ -24,7 +24,9 @@ function concat (glue, seq)
 	return [ ...seq ].join(glue)
 }
 
-//*
+attempt(() => check.as('some_value', 1, 2))
+
+/*
 attempt(() => check.as('some_value', Length, {}))
 attempt(() => check.as('some_value', Length, { length: 'x' }))
 attempt(() => check.as('some_value', Length, []))
