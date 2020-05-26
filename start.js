@@ -24,8 +24,8 @@ function concat (glue, seq)
 	return [ ...seq ].join(glue)
 }
 
-attempt(() => check.as('some_value', 1, 2))
-attempt(() => check.as('some_value', assert, false))
+// attempt(() => check.as('some_value', 1, 2))
+// attempt(() => check.as('some_value', assert, false))
 
 /*
 attempt(() => check.as('some_value', Length, {}))
@@ -35,7 +35,7 @@ attempt(() => check.as('some_value', Length, { length: 1 }))
 //*/
 
 
-//*
+/*
 var ternary = Enum([ null, true, false ])
 attempt(() => check.as('some_enum', ternary, 0))
 attempt(() => check.as('some_enum', ternary, 1))
@@ -71,12 +71,13 @@ attempt(() => check.as('foobar', prop_x, {}))
 attempt(() => check.as('foobar', prop_x, { x: 1 }))
 //*/
 
-/*
+//*
 var prop_x_number = PropType('x', Number)
 attempt(() => check.as('foobar', prop_x_number, 1))
 attempt(() => check.as('foobar', prop_x_number, {}))
 attempt(() => check.as('foobar', prop_x_number, { x: '1' }))
 attempt(() => check.as('foobar', prop_x_number, { x: 1 }))
+attempt(() => check.as('foobar', prop_x_number, { x: 1, y: 'y' }))
 //*/
 
 /*

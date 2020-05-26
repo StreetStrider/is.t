@@ -1,5 +1,6 @@
 
 import ack   from './ack'
+import Wrong from './Wrong'
 
 
 export default function check (contract, value)
@@ -47,9 +48,9 @@ check.cause = (contract, value, sub_fn) =>
 
 function caused (sub_fn, cause)
 {
-	var wrong = sub_fn(cause)
-
+	var
+	wrong = sub_fn(cause)
+	wrong = Wrong.cast(wrong)
 	wrong.cause = cause
-
 	return wrong
 }

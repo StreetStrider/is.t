@@ -1,3 +1,4 @@
+/* eslint complexity: [ 2, 6 ] */
 
 import def from 'def-prop'
 import val from 'def-prop/val'
@@ -29,10 +30,10 @@ export default function Wrong (code, options)
 	def(wrong, 'contract', val(null, ':write', ':enum'))
 
 	wrong.code   = code
-	wrong.for    = ''
+	wrong.for    = (options.for    || '' )
 	wrong.detail = (options.detail || null)
+	wrong.cause  = (options.cause  || null)
 
-	wrong.cause  = null
 	wrong.description = (options.description || '')
 
 	return wrong
