@@ -1,7 +1,8 @@
 /* @primitive */
 
 import Contract from './Contract'
-import Wrong    from './Wrong'
+
+const code = 'must_contain_prop'
 
 
 export default function Prop (name)
@@ -10,11 +11,12 @@ export default function Prop (name)
 	{
 		if (! (name in Object(value)))
 		{
-			var wrong = Wrong('must_contain_prop')
+			var detail =
+			{
+				prop: name,
+			}
 
-			wrong.detail = { prop: name }
-
-			return wrong
+			return { code, detail }
 		}
 	})
 }
