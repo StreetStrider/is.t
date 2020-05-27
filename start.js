@@ -64,7 +64,7 @@ attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 // attempt(() => concat('', [ 'a' ]))
 // attempt(() => concat('/', {}))
 
-//*
+/*
 var prop_x = Prop('x')
 attempt(() => check.as('foobar', prop_x, 1))
 attempt(() => check.as('foobar', prop_x, {}))
@@ -80,15 +80,15 @@ attempt(() => check.as('foobar', prop_x_number, { x: 1 }))
 attempt(() => check.as('foobar', prop_x_number, { x: 1, y: 'y' }))
 //*/
 
-/*
+//*
 var Pt = Record({ x: Number, y: Number, point: true })
 
 attempt(() => check.as('some_point', Pt, 1))
 attempt(() => check.as('some_point', Pt, {}))
-attempt(() => check.as('some_point', Pt, { x: 1 }))
+// attempt(() => check.as('some_point', Pt, { x: 1 }))
 attempt(() => check.as('some_point', Pt, { x: 1, y: 'a' }))
-attempt(() => check.as('some_point', Pt, { x: 1, y: 2 }))
-attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: false }))
+// attempt(() => check.as('some_point', Pt, { x: 1, y: 2 }))
+// attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: false }))
 attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
 //*/
 

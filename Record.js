@@ -9,7 +9,7 @@ export default function Record (record)
 {
 	check.as('record', Object, record)
 
-	record = props(record)
+	record = shape(record)
 
 	return Contract('Record', value =>
 	{
@@ -17,13 +17,16 @@ export default function Record (record)
 
 		for (let key in record)
 		{
+			// TODO: check.cause wrong_record?
 			check(record[key], value)
 		}
+
+		// TODO: strict?
 	})
 }
 
 
-function props (record)
+function shape (record)
 {
 	record = { ...record }
 
