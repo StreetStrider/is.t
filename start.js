@@ -11,8 +11,8 @@ import Enum     from './Enum'
 import Length   from './Length'
 import Assert   from './Assert'
 
-var Glue = Compose(String, Values)
-var Seq  = Compose(Array,  Values)
+var Glue = Compose('Glue', String, Values)
+var Seq  = Compose('Seq', Array, Values)
 
 var assert = Assert('That condition must be true')
 
@@ -60,8 +60,8 @@ attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 // attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
 // attempt(() => concat('/', {}))
 // attempt(() => concat(101, [ 'a', 'b', 'c' ]))
-// attempt(() => concat('/', []))
-// attempt(() => concat('', [ 'a' ]))
+attempt(() => concat('/', []))
+attempt(() => concat('', [ 'a' ]))
 // attempt(() => concat('/', {}))
 
 /*
@@ -80,7 +80,7 @@ attempt(() => check.as('foobar', prop_x_number, { x: 1 }))
 attempt(() => check.as('foobar', prop_x_number, { x: 1, y: 'y' }))
 //*/
 
-//*
+/*
 var Pt = Record({ x: Number, y: Number, point: true })
 
 attempt(() => check.as('some_point', Pt, 1))

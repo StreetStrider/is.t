@@ -1,22 +1,21 @@
 /* @composite */
 
-import Any from './Any'
 import Contract from './Contract'
 import check from './check'
 
 
-export default function Compose (...contracts)
+export default function Compose (name, ...contracts)
 {
 	if (! contracts.length)
 	{
-		return Any
+		return Contract(name, () => {})
 	}
 	if (contracts.length === 1)
 	{
-		return contracts[0]
+		return Contract(name, contracts[0])
 	}
 
-	return Contract('Compose', (value) =>
+	return Contract(name, (value) =>
 	{
 		for (const C of contracts)
 		{
