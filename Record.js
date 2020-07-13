@@ -17,7 +17,6 @@ export default function Record (record)
 
 		for (let key in record)
 		{
-			// TODO: check.cause wrong_record?
 			check(record[key], value)
 		}
 
