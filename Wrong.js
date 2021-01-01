@@ -29,12 +29,12 @@ export default function Wrong (code, options)
 
 	def(wrong, 'contract', val(null, ':write', ':enum'))
 
-	wrong.code   = code
-	wrong.for    = (options.for    || '' )
-	wrong.detail = (options.detail || null)
-	wrong.cause  = (options.cause  || null)
-
+	wrong.code = code
 	wrong.description = (options.description || '')
+	wrong.detail = (options.detail || null)
+
+	wrong.for    = (options.for    || '' )
+	wrong.cause  = (options.cause  || null)
 
 	return wrong
 }
