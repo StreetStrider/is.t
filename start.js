@@ -1,20 +1,22 @@
 
 import check from './check'
 
-import Compose  from './Compose'
-import Values   from './Values'
-import Prop     from './Prop'
-import PropType from './PropType'
-import Tuple    from './Tuple'
-import Record   from './Record'
-import Enum     from './Enum'
-import Length   from './Length'
-import Assert   from './Assert'
+import Compose   from './Compose'
+import Values    from './Values'
+import Prop      from './Prop'
+import PropType  from './PropType'
+import Tuple     from './Tuple'
+import Record    from './Record'
+import Enum      from './Enum'
+import Length    from './Length'
+import Assert    from './Assert'
+import Condition from './Condition'
 
 var Glue = Compose('Glue', String, Values)
 var Seq  = Compose('Seq', Array, Values)
 
 var assert = Assert('That condition must be true')
+var condition = Condition(x => x > 1, 'Value must be greater than 1')
 
 function concat (glue, seq)
 {
@@ -25,7 +27,8 @@ function concat (glue, seq)
 }
 
 // attempt(() => check.as('some_value', 1, 2))
-// attempt(() => check.as('some_value', assert, false))
+attempt(() => check.as('some_value', assert, false))
+attempt(() => check.as('some_value', condition, 0))
 
 /*
 attempt(() => check.as('some_value', Length, {}))
@@ -80,7 +83,7 @@ attempt(() => check.as('foobar', prop_x_number, { x: 1 }))
 attempt(() => check.as('foobar', prop_x_number, { x: 1, y: 'y' }))
 //*/
 
-//*
+/*
 var Pt = Record({ x: Number, y: Number, point: true })
 
 attempt(() => check.as('some_point', Pt, 1))

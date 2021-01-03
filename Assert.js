@@ -3,10 +3,10 @@
 import check    from './check'
 import Contract from './Contract'
 
-const code = 'violate_assert'
+const code = 'must_satisfy_assert'
 
 
-export default function Assert (description)
+export default function Assert (description = 'Assert is not satisfied')
 {
 	check.as('description', String, description)
 
