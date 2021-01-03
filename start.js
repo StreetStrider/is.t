@@ -29,6 +29,7 @@ function concat (glue, seq)
 // attempt(() => check.as('some_value', 1, 2))
 attempt(() => check.as('some_value', assert, false))
 attempt(() => check.as('some_value', condition, 0))
+attempt(() => check.as('some_value', x => x > 2, 0))
 
 /*
 attempt(() => check.as('some_value', Length, {}))

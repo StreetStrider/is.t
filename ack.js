@@ -1,7 +1,8 @@
 
-import Contract from './Contract'
-import builtin  from './builtin'
-import Literal  from './Literal'
+import Contract  from './Contract'
+import builtin   from './builtin'
+import Condition from './Condition'
+import Literal   from './Literal'
 
 
 export default function ack (contract)
@@ -16,7 +17,12 @@ export default function ack (contract)
 	}
 	else if (typeof contract === 'function')
 	{
-		return Contract(contract.name, contract)
+		var name = contract.name
+		if (name)
+		{
+			var description = `Function ${ name } must be met`
+		}
+		return Condition(contract, description)
 	}
 	else
 	{
