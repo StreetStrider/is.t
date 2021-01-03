@@ -3,6 +3,7 @@
 import def from 'def-prop'
 import val from 'def-prop/val'
 
+import is_object from './is-object'
 
 const trait = Symbol('Wrong')
 
@@ -73,10 +74,4 @@ Wrong.cast = (value) =>
 		wrong.cause = value
 		return wrong
 	}
-}
-
-
-function is_object (value)
-{
-	return (Object(value) === value)
 }

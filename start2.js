@@ -1,8 +1,5 @@
 
 import check from './check'
-import { match } from './match'
-import { handle } from './match'
-import { multiple } from './match'
 
 import Compose   from './Compose'
 import Values    from './Values'
@@ -21,7 +18,6 @@ var Seq  = Compose('Seq', Array, Values)
 var assert = Assert('That condition must be true')
 var condition = Condition(x => x > 1, 'Value must be greater than 1')
 
-// 
 function concat (glue, seq)
 {
 	check.as('seq',  Seq,  seq)
@@ -30,34 +26,10 @@ function concat (glue, seq)
 	return [ ...seq ].join(glue)
 }
 
-attempt(async () =>
-{
-	return await Promise.resolve()
-	.then(() =>
-	{
-		return check(1, { x: 1 })
-		// return concat(101, [ 'a', 'b', 'c' ])
-		// return concat('/', [])
-	})
-	// match('must_be_string', e)
-	.catch(multiple([ { detail: { actual: { x: 1 } } }, (wrong) =>
-	{
-		console.log('match', wrong)
-	} ]))
-})
-
-// attempt(() => concat('/', [ 'a', 'b', 'c' ]))
-// attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
-// attempt(() => concat('/', {}))
-// attempt(() => concat(101, [ 'a', 'b', 'c' ]))
-// attempt(() => concat('/', []))
-// attempt(() => concat('', [ 'a' ]))
-// attempt(() => concat('/', {}))
-
 // attempt(() => check.as('some_value', 1, 2))
-// attempt(() => check.as('some_value', assert, false))
-// attempt(() => check.as('some_value', condition, 0))
-// attempt(() => check.as('some_value', x => x > 2, 0))
+attempt(() => check.as('some_value', assert, false))
+attempt(() => check.as('some_value', condition, 0))
+attempt(() => check.as('some_value', x => x > 2, 0))
 
 /*
 attempt(() => check.as('some_value', Length, {}))
@@ -87,6 +59,14 @@ attempt(() => check.as('some_tuple', Pair, [ '1',  2 ]))
 attempt(() => check.as('some_tuple', Pair, [ 1 ]))
 attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 //*/
+
+// attempt(() => concat('/', [ 'a', 'b', 'c' ]))
+// attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
+// attempt(() => concat('/', {}))
+// attempt(() => concat(101, [ 'a', 'b', 'c' ]))
+// attempt(() => concat('/', []))
+// attempt(() => concat('', [ 'a' ]))
+// attempt(() => concat('/', {}))
 
 /*
 var prop_x = Prop('x')
@@ -119,11 +99,11 @@ attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
 //
 import Wrong from './Wrong'
 
-async function attempt (fn)
+function attempt (fn)
 {
 	try
 	{
-		var r = await fn()
+		var r = fn()
 	}
 	catch (wrong)
 	{
