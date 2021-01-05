@@ -2,7 +2,7 @@
 import check from './check'
 import match from './match'
 import handle from './handle'
-import { multiple } from './handle'
+// import { multiple } from './handle'
 
 import Compose   from './Compose'
 import Values    from './Values'
@@ -35,15 +35,31 @@ attempt(async () =>
 	return await Promise.resolve()
 	.then(() =>
 	{
-		return check(1, { x: 1 })
+		// return check(1, { x: 1 })
 		// return concat(101, [ 'a', 'b', 'c' ])
-		// return concat('/', [])
+		return concat('/', [])
+		// throw new Error('foo')
 	})
-	// match('must_be_string', e)
-	.catch(multiple([ { detail: { actual: { x: 1 } } }, (wrong) =>
+	.catch(handle({ detail: { actual: { x: 1 } } }, (wrong) =>
 	{
-		console.log('match', wrong)
-	} ]))
+		console.log(wrong)
+		return 'match 1'
+	}))
+	.catch(handle('must_be_string', (wrong) =>
+	{
+		console.log(wrong)
+		return 'match 2'
+	}))
+	.catch(handle({ wrong: true }, (wrong) =>
+	{
+		console.log(wrong)
+		return 'match 3'
+	}))
+	.catch((error) =>
+	{
+		console.log(error)
+		return 'error'
+	})
 })
 
 // attempt(() => concat('/', [ 'a', 'b', 'c' ]))

@@ -1,4 +1,4 @@
-/* eslint complexity: [ 2, 7 ] */
+/* eslint complexity: [ 2, 9 ] */
 
 import Wrong from './Wrong'
 import is_object from './is-object'
@@ -16,30 +16,39 @@ export default function match (predicate, error)
 
 function test (predicate, error)
 {
-	error = Wrong.cast(error)
+	if (Wrong.is(error))
+	{
+		var string_value = error.code
+	}
+	else if (error instanceof Error)
+	{
+		var string_value = error.message
+	}
+	else
+	{
+		var string_value = error
+	}
 
 	if (typeof predicate === 'string')
 	{
-		return (error.code === predicate)
+		return (predicate === string_value)
+	}
+	else if (predicate instanceof RegExp)
+	{
+		if (typeof string_value === 'string')
+		{
+			return predicate.test(string_value)
+		}
+
+		return false
 	}
 	else if (typeof predicate === 'function')
 	{
 		return Boolean(predicate(error))
 	}
-	else if (predicate instanceof RegExp)
-	{
-		if (typeof error.code !== 'string')
-		{
-			return false
-		}
-		else
-		{
-			return predicate.test(error.code)
-		}
-	}
 	else if (is_object(predicate) && is_object(error))
 	{
-		return test_as_wrong(predicate, error)
+		return test_object(predicate, error)
 	}
 	else
 	{
@@ -47,7 +56,7 @@ function test (predicate, error)
 	}
 }
 
-function test_as_wrong (predicate, error)
+function test_object (predicate, error)
 {
 	for (var key in predicate)
 	{
@@ -93,21 +102,4 @@ function test_value (predicate, value)
 	{
 		return (predicate === value)
 	}
-}
-
-function test_object (pattern, target)
-{
-	for (var key in pattern)
-	{
-		if (! (key in target))
-		{
-			return false
-		}
-		if (! test_value(pattern[key], target[key]))
-		{
-			return false
-		}
-	}
-
-	return true
 }
