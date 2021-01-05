@@ -1,8 +1,8 @@
 
 import check from './check'
-import { match } from './match'
-import { handle } from './match'
-import { multiple } from './match'
+import match from './match'
+import handle from './handle'
+import { multiple } from './handle'
 
 import Compose   from './Compose'
 import Values    from './Values'

@@ -2,10 +2,9 @@
 
 import Wrong from './Wrong'
 import is_object from './is-object'
-import check from './check'
 
 
-export function match (predicate, error)
+export default function match (predicate, error)
 {
 	switch (arguments.length)
 	{
@@ -111,47 +110,4 @@ function test_object (pattern, target)
 	}
 
 	return true
-}
-
-
-export function handle (predicate, handler_fn)
-{
-	check.as('handler_fn', Function, handler_fn)
-
-	var mexp = match(predicate)
-
-	return (error) =>
-	{
-		if (mexp(error))
-		{
-			return handler_fn(error)
-		}
-		else
-		{
-			throw error
-		}
-	}
-}
-
-export function multiple (...handlers)
-{
-	handlers = handlers.map(([ predicate, handler_fn ], index) =>
-	{
-		check.as(`handlers[${ index }].handler_fn`, Function, handler_fn)
-
-		return [ match(predicate), handler_fn ]
-	})
-
-	return (error) =>
-	{
-		for (var [ mexp, handler_fn ] of handlers)
-		{
-			if (mexp(error))
-			{
-				return handler_fn(error)
-			}
-		}
-
-		throw error
-	}
 }
