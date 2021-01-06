@@ -15,6 +15,19 @@ export default function Compose (name, ...contracts)
 		return Contract(name, contracts[0])
 	}
 
+	contracts = contracts.map((contract, index) =>
+	{
+		var name = `contracts[${ index }]`
+		check.as(name, Function, contract)
+
+		if (Contract.is(contract))
+		{
+			return contract
+		}
+
+		return Contract(name, contract)
+	})
+
 	return Contract(name, (value) =>
 	{
 		for (const C of contracts)
