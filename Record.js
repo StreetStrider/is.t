@@ -21,6 +21,7 @@ export default function Record (record)
 		}
 
 		// TODO: strict?
+		// TODO: optional?
 	})
 }
 
