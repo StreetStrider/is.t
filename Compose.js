@@ -6,13 +6,18 @@ import check from './check'
 
 export default function Compose (name, ...contracts)
 {
+	check(String, name)
+
 	if (! contracts.length)
 	{
 		return Contract(name, () => {})
 	}
 	if (contracts.length === 1)
 	{
-		return Contract(name, contracts[0])
+		var contract = contracts[0]
+		check.as('contracts[0]', Function, contract)
+
+		return Contract(name, contract)
 	}
 
 	contracts = contracts.map((contract, index) =>
