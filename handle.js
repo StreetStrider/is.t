@@ -26,7 +26,7 @@ export function multiple (...handlers)
 {
 	handlers = handlers.map(([ predicate, handler_fn ], index) =>
 	{
-		check.as(`handlers[${ index }].handler_fn`, Function, handler_fn)
+		check.as(`handlers/${ index }/handler_fn`, Function, handler_fn)
 
 		return [ match(predicate), handler_fn ]
 	})

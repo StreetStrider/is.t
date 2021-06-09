@@ -15,14 +15,29 @@ export default function Compose (name, ...contracts)
 	if (contracts.length === 1)
 	{
 		var contract = contracts[0]
-		check.as('contracts[0]', Function, contract)
+		check.as('contracts/0', Function, contract)
 
 		return Contract(name, contract)
 	}
 
-	contracts = contracts.map((contract, index) =>
+	contracts = prep_contracts(contracts)
+
+	return Contract(name, (value) =>
 	{
-		var name = `contracts[${ index }]`
+		for (const C of contracts)
+		{
+			check(C, value)
+		}
+	})
+}
+
+
+export function prep_contracts (contracts)
+{
+	// TODO: ack, or check.as
+	return contracts.map((contract, index) =>
+	{
+		var name = ('contracts/' + index)
 		check.as(name, Function, contract)
 
 		if (Contract.is(contract))
@@ -31,13 +46,5 @@ export default function Compose (name, ...contracts)
 		}
 
 		return Contract(name, contract)
-	})
-
-	return Contract(name, (value) =>
-	{
-		for (const C of contracts)
-		{
-			check(C, value)
-		}
 	})
 }

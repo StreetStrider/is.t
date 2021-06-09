@@ -4,7 +4,6 @@ import match from './match'
 import handle from './handle'
 // import { multiple } from './handle'
 
-import Compose   from './Compose'
 import Values    from './Values'
 import Prop      from './Prop'
 import PropType  from './PropType'
@@ -14,6 +13,10 @@ import Enum      from './Enum'
 import Length    from './Length'
 import Assert    from './Assert'
 import Condition from './Condition'
+
+import Compose   from './Compose'
+import Intersection from './Intersection'
+import Union from './Union'
 
 var Glue = Compose('Glue', String, Values)
 var Seq  = Compose('Seq', Array, Values)
@@ -30,6 +33,7 @@ function concat (glue, seq)
 	return [ ...seq ].join(glue)
 }
 
+/*
 attempt(async () =>
 {
 	return await Promise.resolve()
@@ -61,6 +65,7 @@ attempt(async () =>
 		return 'error'
 	})
 })
+//*/
 
 // attempt(() => concat('/', [ 'a', 'b', 'c' ]))
 // attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
@@ -132,14 +137,30 @@ attempt(() => check.as('some_point', Pt, { x: 1, y: 'a' }))
 attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
 //*/
 
+var R1 = Record({ a: Number })
+var R2 = Record({ b: String })
+var R = Intersection(R1, R2)
+var U = Union(R1, R2)
+
+// attempt(() => check.as('intr', R, {}))
+// attempt(() => check.as('intr', R, { a: 1 }))
+// attempt(() => check.as('intr', R, { a: 1, b: 2 }))
+attempt(() => check.as('intr', R, { a: 1, b: 'foo' }))
+
+attempt(() => check.as('uni', U, {}))
+attempt(() => check.as('uni', U, { a: 1 }))
+attempt(() => check.as('uni', U, { b: 2 }))
+attempt(() => check.as('uni', U, { a: 1, b: 2 }))
+attempt(() => check.as('uni', U, { a: 1, b: 'foo' }))
+
 //
 import Wrong from './Wrong'
 
-async function attempt (fn)
+function attempt (fn)
 {
 	try
 	{
-		var r = await fn()
+		var r = fn()
 	}
 	catch (wrong)
 	{
