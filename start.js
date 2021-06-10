@@ -17,6 +17,7 @@ import Condition from './Condition'
 import Compose   from './Compose'
 import Intersection from './Intersection'
 import Union from './Union'
+import Nullable from './Nullable'
 
 var Glue = Compose('Glue', String, Values)
 var Seq  = Compose('Seq', Array, Values)
@@ -145,13 +146,20 @@ var U = Union(R1, R2)
 // attempt(() => check.as('intr', R, {}))
 // attempt(() => check.as('intr', R, { a: 1 }))
 // attempt(() => check.as('intr', R, { a: 1, b: 2 }))
-attempt(() => check.as('intr', R, { a: 1, b: 'foo' }))
+// attempt(() => check.as('intr', R, { a: 1, b: 'foo' }))
 
-attempt(() => check.as('uni', U, {}))
-attempt(() => check.as('uni', U, { a: 1 }))
-attempt(() => check.as('uni', U, { b: 2 }))
-attempt(() => check.as('uni', U, { a: 1, b: 2 }))
-attempt(() => check.as('uni', U, { a: 1, b: 'foo' }))
+// attempt(() => check.as('uni', U, {}))
+// attempt(() => check.as('uni', U, { a: 1 }))
+// attempt(() => check.as('uni', U, { b: 2 }))
+// attempt(() => check.as('uni', U, { a: 1, b: 2 }))
+// attempt(() => check.as('uni', U, { a: 1, b: 'foo' }))
+
+var nul_number = Nullable(Number)
+
+attempt(() => check.as('nullable', nul_number, 1))
+attempt(() => check.as('nullable', nul_number, null))
+attempt(() => check.as('nullable', nul_number, undefined))
+attempt(() => check.as('nullable', nul_number, '2'))
 
 //
 import Wrong from './Wrong'
@@ -165,7 +173,7 @@ function attempt (fn)
 	catch (wrong)
 	{
 		// process.stdout.write(Wrong.pretty(wrong))
-		console.log(wrong)
+		console.dir(wrong, { depth: 2 })
 		// console.log(Wrong.cleanup(wrong))
 		// console.error(wrong)
 		// console.warn(wrong.contract)
