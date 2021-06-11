@@ -2,7 +2,7 @@
 
 import { prep_contracts } from './Compose'
 import Contract from './Contract'
-import check from './check'
+import check from '../check'
 
 const code = 'must_be_union_of'
 const description = 'Type mismatch with the some of contracts'

@@ -1,8 +1,9 @@
 
-import Contract  from './Contract'
-import builtin   from './builtin'
-import Condition from './Condition'
-import Literal   from './Literal'
+import Contract  from './type/Contract'
+import Condition from './type/Condition'
+import Literal   from './type/Literal'
+
+import builtin   from './type/_/builtin'
 
 
 export default function ack (contract)

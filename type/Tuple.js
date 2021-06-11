@@ -1,8 +1,8 @@
 /* @composite */
 
-import check    from './check'
+import check    from '../check'
 import Contract from './Contract'
-import ack      from './ack'
+import ack      from '../ack'
 
 const wrong_length =
 {

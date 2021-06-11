@@ -1,6 +1,6 @@
 /* @primitive */
 
-import Contract from './Contract'
+import Contract from '../Contract'
 
 
 export var Boolean = Contract('Boolean', value =>

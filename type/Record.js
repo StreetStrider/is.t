@@ -1,7 +1,7 @@
 /* @composite */
 
 import Contract from './Contract'
-import check    from './check'
+import check    from '../check'
 import PropType from './PropType'
 
 

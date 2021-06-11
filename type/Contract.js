@@ -4,7 +4,7 @@ import val from 'def-prop/val'
 
 import Name from 'function-name'
 
-import Wrong from './Wrong'
+import Wrong from '../Wrong'
 
 const trait = Symbol('Contract')
 
