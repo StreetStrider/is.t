@@ -1,6 +1,6 @@
 /* @composite */
 
-import { prep_contracts } from './Compose'
+import { acks } from '../ack'
 import Contract from './Contract'
 import check from '../check'
 
@@ -10,7 +10,7 @@ const description = 'Type mismatch with the some of contracts'
 
 export default function Intersection (...contracts)
 {
-	contracts = prep_contracts(contracts)
+	contracts = acks(contracts)
 	var of = Object.freeze([ ...contracts ])
 
 	return Contract('Intersection', (value) =>

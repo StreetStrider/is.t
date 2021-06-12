@@ -1,7 +1,8 @@
 /* @composite */
 
-import Contract from './Contract'
 import check from '../check'
+import { acks } from '../ack'
+import Contract from './Contract'
 
 
 export default function Compose (name, ...contracts)
@@ -20,7 +21,7 @@ export default function Compose (name, ...contracts)
 		return Contract(name, contract)
 	}
 
-	contracts = prep_contracts(contracts)
+	contracts = acks(contracts)
 
 	return Contract(name, (value) =>
 	{
@@ -28,23 +29,5 @@ export default function Compose (name, ...contracts)
 		{
 			check(C, value)
 		}
-	})
-}
-
-
-export function prep_contracts (contracts)
-{
-	// TODO: ack, or check.as
-	return contracts.map((contract, index) =>
-	{
-		var name = ('contracts/' + index)
-		check.as(name, Function, contract)
-
-		if (Contract.is(contract))
-		{
-			return contract
-		}
-
-		return Contract(name, contract)
 	})
 }

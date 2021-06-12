@@ -30,3 +30,9 @@ export default function ack (contract)
 		return Literal(contract)
 	}
 }
+
+
+export function acks (contracts)
+{
+	return contracts.map(ack)
+}
