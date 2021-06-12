@@ -27,6 +27,14 @@ export var String = Contract('String', value =>
 	}
 })
 
+export var Symbol = Contract('Symbol', value =>
+{
+	if (typeof value !== 'symbol')
+	{
+		return 'must_be_symbol'
+	}
+})
+
 
 export var Object = Contract('Object', value =>
 {
@@ -58,6 +66,7 @@ export default new Map(
 	[ global.Boolean, Boolean ],
 	[ global.Number,  Number ],
 	[ global.String,  String ],
+	[ global.Symbol,  Symbol ],
 
 	// TODO:
 	// [ global.Null, Null ],

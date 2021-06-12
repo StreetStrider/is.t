@@ -19,13 +19,14 @@ import Intersection from './type/Intersection'
 import Union from './type/Union'
 import Nullable from './type/Nullable'
 
-var Glue = Compose('Glue', String, Values)
-var Seq  = Compose('Seq', Array, Values)
-
 var assert = Assert('That condition must be true')
 var condition = Condition(x => x > 1, 'Value must be greater than 1')
 
-// 
+
+/*
+var Glue = Compose('Glue', String, Values)
+var Seq  = Compose('Seq', Array, Values)
+
 function concat (glue, seq)
 {
 	check.as('seq',  Seq,  seq)
@@ -33,6 +34,7 @@ function concat (glue, seq)
 
 	return [ ...seq ].join(glue)
 }
+//*/
 
 /*
 attempt(async () =>
@@ -98,8 +100,9 @@ attempt(() => check.as('some_enum', ternary, false))
 attempt(() => check.as('some_enum', ternary, null))
 //*/
 
-//*
+/*
 var Pair = Tuple([ String, Number ])
+//*/
 
 /*
 // attempt(() => check.as('some_tuple', Pair, 0))
@@ -111,7 +114,7 @@ attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 //*/
 
 /*
-var prop_x = Prop('x')
+var prop_x = Prop(true)
 attempt(() => check.as('foobar', prop_x, 1))
 attempt(() => check.as('foobar', prop_x, {}))
 attempt(() => check.as('foobar', prop_x, { x: 1 }))
@@ -138,6 +141,7 @@ attempt(() => check.as('some_point', Pt, { x: 1, y: 'a' }))
 attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
 //*/
 
+/*
 var R1 = Record({ a: Number })
 var R2 = Record({ b: String })
 var R = Intersection(R1, R2)
@@ -153,13 +157,16 @@ var U = Union(R1, R2)
 // attempt(() => check.as('uni', U, { b: 2 }))
 // attempt(() => check.as('uni', U, { a: 1, b: 2 }))
 // attempt(() => check.as('uni', U, { a: 1, b: 'foo' }))
+//*/
 
+/*
 var nul_number = Nullable(Number)
 
 attempt(() => check.as('nullable', nul_number, 1))
 attempt(() => check.as('nullable', nul_number, null))
 attempt(() => check.as('nullable', nul_number, undefined))
 attempt(() => check.as('nullable', nul_number, '2'))
+//*/
 
 //
 import Wrong from './Wrong'
