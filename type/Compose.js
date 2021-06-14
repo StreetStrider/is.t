@@ -1,6 +1,7 @@
 /* @composite */
 
 import check from '../check'
+import ack from '../ack'
 import { acks } from '../ack'
 import Contract from './Contract'
 
@@ -15,10 +16,7 @@ export default function Compose (name, ...contracts)
 	}
 	if (contracts.length === 1)
 	{
-		var contract = contracts[0]
-		check.as('contracts/0', Function, contract)
-
-		return Contract(name, contract)
+		return ack(contracts[0])
 	}
 
 	contracts = acks(contracts)
