@@ -5,7 +5,12 @@ import Wrong from './Wrong'
 
 export default function check (contract, value)
 {
-	return ack(contract)(value)
+	switch (arguments.length)
+	{
+	case 0:  return check
+	case 1:  return ack(contract)
+	default: return ack(contract)(value)
+	}
 }
 
 
