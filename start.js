@@ -23,7 +23,7 @@ var assert = Assert('That condition must be true')
 var condition = Condition(x => x > 1, 'Value must be greater than 1')
 
 
-/*
+//*
 var Glue = Compose('Glue', String, Values)
 var Seq  = Compose('Seq', Array, Values)
 
@@ -34,39 +34,43 @@ function concat (glue, seq)
 
 	return [ ...seq ].join(glue)
 }
-//*/
 
-/*
-attempt(async () =>
+
+Promise.resolve()
+.then(() =>
 {
-	return await Promise.resolve()
-	.then(() =>
-	{
-		// return check(1, { x: 1 })
-		// return concat(101, [ 'a', 'b', 'c' ])
-		return concat('/', [])
-		// throw new Error('foo')
-	})
-	.catch(handle({ detail: { actual: { x: 1 } } }, (wrong) =>
-	{
-		console.log(wrong)
-		return 'match 1'
-	}))
-	.catch(handle('must_be_string', (wrong) =>
-	{
-		console.log(wrong)
-		return 'match 2'
-	}))
-	.catch(handle({ wrong: true }, (wrong) =>
-	{
-		console.log(wrong)
-		return 'match 3'
-	}))
-	.catch((error) =>
-	{
-		console.log(error)
-		return 'error'
-	})
+	// return check(1, { x: 1 })
+	// return concat(101, [ 'a', 'b', 'c' ])
+	return concat('/', [])
+	// throw new Error('foo')
+})
+.catch(handle({ detail: { actual: { x: 1 } } }, (wrong) =>
+{
+	console.log(wrong)
+	return 'match 1'
+}))
+.catch(handle('must_be_string', (wrong) =>
+{
+	console.log(wrong)
+	return 'match 2'
+}))
+.catch(handle({ wrong: true }, (wrong) =>
+{
+	console.log(wrong)
+	return 'match 3'
+}))
+.catch((error) =>
+{
+	console.log(error)
+	return 'match error'
+})
+.then(r =>
+{
+	console.info(r)
+},
+e =>
+{
+	console.dir(wrong, { depth: 2 })
 })
 //*/
 

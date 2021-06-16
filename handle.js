@@ -1,17 +1,17 @@
 
 import check from './check'
-import match from './match'
+import Match from './match'
 
 
 export default function handle (predicate, handler_fn)
 {
 	check.as('handler_fn', Function, handler_fn)
 
-	var mexp = match(predicate)
+	var match = Match(predicate)
 
 	return (error) =>
 	{
-		if (mexp(error))
+		if (match(error))
 		{
 			return handler_fn(error)
 		}
@@ -28,14 +28,14 @@ export function multiple (...handlers)
 	{
 		check.as(`handlers/${ index }/handler_fn`, Function, handler_fn)
 
-		return [ match(predicate), handler_fn ]
+		return [ Match(predicate), handler_fn ]
 	})
 
 	return (error) =>
 	{
-		for (var [ mexp, handler_fn ] of handlers)
+		for (var [ match, handler_fn ] of handlers)
 		{
-			if (mexp(error))
+			if (match(error))
 			{
 				return handler_fn(error)
 			}
