@@ -1,6 +1,5 @@
 
-import ack   from './ack'
-import Wrong from './Wrong'
+import ack from './type/_/ack'
 
 
 export default function check (contract, value)
@@ -39,6 +38,9 @@ function partof (wrong, name)
 
 	return wrong
 }
+
+
+import Wrong from './Wrong'
 
 
 check.cause = (contract, value, sub_fn) =>

@@ -1,8 +1,7 @@
 /* @composite */
 
-import check    from '../check'
+import check from '../check'
 import Contract from './Contract'
-import ack      from '../ack'
 
 const wrong_length =
 {
@@ -39,7 +38,7 @@ export default function Tuple (tuple)
 
 		for (let n = 0; (n < L); n++)
 		{
-			const C = ack(tuple[n])
+			const C = check(tuple[n])
 
 			check.cause(C, value[n], () =>
 			{

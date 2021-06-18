@@ -1,9 +1,9 @@
 /* @composite */
 
+import check from '../check'
+
 import Prop     from './Prop'
-import ack      from '../ack'
 import Contract from './Contract'
-import check    from '../check'
 
 const code = 'must_have_type_in_prop'
 const description = 'Type mismatch in specific property in object'
@@ -12,7 +12,7 @@ const description = 'Type mismatch in specific property in object'
 export default function PropType (name, type)
 {
 	var prop = Prop(name)
-	type = ack(type)
+	type = check(type)
 
 	return Contract('PropType', value =>
 	{
