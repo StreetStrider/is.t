@@ -16,6 +16,7 @@ export default function ack (contract)
 	{
 		return builtin.get(contract)
 	}
+	// TODO: instanceof globals
 	else if (typeof contract === 'function')
 	{
 		var name = contract.name
