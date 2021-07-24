@@ -68,9 +68,8 @@ export default new Map(
 	[ global.String,  String ],
 	[ global.Symbol,  Symbol ],
 
-	// TODO:
-	// [ global.Null, Null ],
-	// undefined, void 0
+	// [ global.Null, Null ], // TODO:
+	// undefined, void 0      // TODO:
 
 	[ global.Object, Object ],
 	[ global.Array,  Array ],
