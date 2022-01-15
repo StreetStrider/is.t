@@ -23,7 +23,7 @@ var assert = Assert('That condition must be true')
 var condition = Condition(x => x > 1, 'Value must be greater than 1')
 
 
-//*
+/*
 var Glue = Compose('Glue', String, Values)
 var Seq  = Compose('Seq', Array, Values)
 
@@ -36,6 +36,7 @@ function concat (glue, seq)
 }
 
 
+/*
 Promise.resolve()
 .then(() =>
 {
@@ -105,16 +106,14 @@ attempt(() => check.as('some_enum', ternary, null))
 //*/
 
 /*
-var Pair = Tuple([ String, Number ])
-//*/
+var Pair = Tuple([ Number, String ])
 
-/*
 // attempt(() => check.as('some_tuple', Pair, 0))
-attempt(() => check.as('some_tuple', Pair, [  1,   2 ]))
+attempt(() => check.as('some_tuple', Pair, [  1016,   1017 ]))
 // attempt(() => check.as('some_tuple', Pair, [ '1', '2' ]))
-attempt(() => check.as('some_tuple', Pair, [ '1',  2 ]))
-attempt(() => check.as('some_tuple', Pair, [ 1 ]))
-attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
+// attempt(() => check.as('some_tuple', Pair, [ '1',  2 ]))
+// attempt(() => check.as('some_tuple', Pair, [ 1 ]))
+// attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 //*/
 
 /*
