@@ -1,63 +1,65 @@
 
-import ack from './type/_/ack'
+import Wrong from './Wrong'
+import { invoke } from './_/attempt'
+import check1 from './_/check'
+import unitval from './_/unitval'
 
 
-export default function check (contract, value)
+export default function check (contract, against_value)
 {
 	switch (arguments.length)
 	{
 	case 0:  return check
-	case 1:  return ack(contract)
-	default: return ack(contract)(value)
+	case 1:  return (against_value) => check1(contract, against_value)
+	default: return check1(contract, against_value)
 	}
 }
 
 
-import attempt from './attempt'
+check.unit  = check_unit
+check.as    = check_as
+check.cause = check_cause
 
-check.as = (name, contract, value) =>
+
+function check_unit (contract, against_unit)
 {
-	check(String, name)
+	var [ name, against_value ] = unitval(against_unit)
 
-	return attempt(
-		()      => { return check(contract, value) },
-		(wrong) => {  throw partof(wrong, name) },
-	)
+	return check_as(name, contract, against_value)
 }
 
-function partof (wrong, name)
+
+function check_as (name, contract, against_value)
 {
-	if (! wrong.for)
+	check1(String, name)
+
+	return invoke(check1, [ contract, against_value ], as_issuer(name))
+}
+
+function as_issuer (issuer)
+{
+	return (wrong) =>
 	{
-		wrong.for = name
+		wrong.issuer.unshift(issuer)
+		throw wrong
 	}
-	else
+}
+
+
+function check_cause (contract, against_value, sub_fn)
+{
+	check_as('sub_fn', Function, sub_fn)
+
+	return invoke(check1, [ contract, against_value ], caused(sub_fn))
+}
+
+function caused (sub_fn)
+{
+	return (cause) =>
 	{
-		wrong.for = (name + '/' + wrong.for)
+		var
+		wrong = Wrong.cast(sub_fn())
+		wrong.cause = Wrong.cast(cause)
+		throw wrong
 	}
-
-	return wrong
-}
-
-
-import Wrong from './Wrong'
-
-
-check.cause = (contract, value, sub_fn) =>
-{
-	check.as('sub_fn', Function, sub_fn)
-
-	return attempt(
-		()      => { return check(contract, value) },
-		(cause) => { throw caused(sub_fn, cause) },
-	)
-}
-
-function caused (sub_fn, cause)
-{
-	var
-	wrong = sub_fn(cause)
-	wrong = Wrong.cast(wrong)
-	wrong.cause = cause
-	return wrong
 }

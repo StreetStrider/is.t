@@ -67,11 +67,23 @@ export default new Map(
 	[ global.Number,  Number ],
 	[ global.String,  String ],
 	[ global.Symbol,  Symbol ],
-
-	// [ global.Null, Null ], // TODO:
-	// undefined, void 0      // TODO:
-
 	[ global.Object, Object ],
 	[ global.Array,  Array ],
 	[ global.Function, Function ],
 ])
+
+// function Instance ()
+// {
+// TODO: instanceof globals
+// }
+
+// Error
+// TypeError
+// Wrong
+
+// Date
+// RegExp
+// Map
+// Set
+
+// Promise

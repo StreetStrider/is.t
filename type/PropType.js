@@ -1,6 +1,7 @@
 /* @composite */
 
 import check from '../check'
+import ack from './_/ack'
 
 import Prop     from './Prop'
 import Contract from './Contract'
@@ -12,7 +13,7 @@ const description = 'Type mismatch in specific property in object'
 export default function PropType (name, type)
 {
 	var prop = Prop(name)
-	type = check(type)
+	type = ack(type)
 
 	return Contract('PropType', value =>
 	{
@@ -22,7 +23,7 @@ export default function PropType (name, type)
 			var detail =
 			{
 				prop: name,
-				value: value[name],
+				expected: value[name],
 				expected: type,
 			}
 

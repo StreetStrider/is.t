@@ -2,33 +2,36 @@
 import def from 'def-prop'
 import val from 'def-prop/val'
 
-import Name from 'function-name'
+import mut_name from 'function-name'
 
 import Wrong from '../Wrong'
 
 const trait = Symbol('Contract')
 
-const v0 = void 0
-
 
 export default function Contract (name, fn)
 {
-	var contract = check
+	if (typeof name !== 'string')
+	{
+		throw Wrong('contract_name_must_be_string')
+	}
+	if (typeof fn !== 'function')
+	{
+		throw Wrong('contract_fn_must_be_function')
+	}
 
-	Name(check, name)
-
-	function check (value)
+	function contract (value)
 	{
 		var wrong = attest(value)
 
-		if (wrong === v0)
+		if (wrong === void 0)
 		{
 			return value
 		}
 
 		/* @mutable */
 		wrong = Wrong.cast(wrong)
-		Error.captureStackTrace(wrong, check)
+		Error.captureStackTrace(wrong, contract)
 		wrong.contract = contract
 
 		throw wrong
@@ -36,7 +39,7 @@ export default function Contract (name, fn)
 
 	function is (value)
 	{
-		return (attest(value) === v0)
+		return (attest(value) === void 0)
 	}
 
 	function attest (value)
@@ -51,12 +54,12 @@ export default function Contract (name, fn)
 		}
 	}
 
-
 	def(contract, 'contract', val(true, ':enum'))
 	def(contract, trait, val(true))
+	// constructor = function
 
 	def(contract, 'is', val(is))
-	def(contract, 'attest', val(attest))
+	mut_name(contract, name)
 
 	return contract
 }

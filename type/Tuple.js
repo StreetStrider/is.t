@@ -1,6 +1,8 @@
 /* @composite */
 
 import check from '../check'
+import ack from './_/ack'
+
 import Contract from './Contract'
 
 const wrong_length =
@@ -28,8 +30,8 @@ export default function Tuple (tuple)
 		{
 			var detail =
 			{
-				expected: tuple.length,
 				actual:   value.length,
+				expected: tuple.length,
 			}
 			return { ...wrong_length, detail }
 		}
@@ -38,14 +40,14 @@ export default function Tuple (tuple)
 
 		for (let n = 0; (n < L); n++)
 		{
-			const C = check(tuple[n])
+			const C = ack(tuple[n])
 
 			check.cause(C, value[n], () =>
 			{
 				var detail =
 				{
 					pos: n,
-					value: value[n],
+					actual: value[n],
 					expected: C,
 				}
 

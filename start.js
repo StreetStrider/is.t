@@ -22,10 +22,10 @@ import Nullable from './type/Nullable'
 var assert = Assert('That condition must be true')
 var condition = Condition(x => x > 1, 'Value must be greater than 1')
 
-
-/*
 var Glue = Compose('Glue', String, Values)
 var Seq  = Compose('Seq', Array, Values)
+
+/*
 
 function concat (glue, seq)
 {
@@ -75,73 +75,73 @@ e =>
 })
 //*/
 
-// attempt(() => concat('/', [ 'a', 'b', 'c' ]))
-// attempt(() => concat('/', new Set([ 'a', 'b', 'c' ])))
-// attempt(() => concat('/', {}))
-// attempt(() => concat(101, [ 'a', 'b', 'c' ]))
-// attempt(() => concat('/', []))
-// attempt(() => concat('', [ 'a' ]))
-// attempt(() => concat('/', {}))
+// apply(() => concat('/', [ 'a', 'b', 'c' ]))
+// apply(() => concat('/', new Set([ 'a', 'b', 'c' ])))
+// apply(() => concat('/', {}))
+// apply(() => concat(101, [ 'a', 'b', 'c' ]))
+// apply(() => concat('/', []))
+// apply(() => concat('', [ 'a' ]))
+// apply(() => concat('/', {}))
 
-// attempt(() => check.as('some_value', 1, 2))
-// attempt(() => check.as('some_value', assert, false))
-// attempt(() => check.as('some_value', condition, 0))
-// attempt(() => check.as('some_value', x => x > 2, 0))
+// apply(() => check.as('some_value', 1, 2))
+// apply(() => check.as('some_value', assert, false))
+// apply(() => check.as('some_value', condition, 0))
+// apply(() => check.as('some_value', x => x > 2, 0))
 
 /*
-attempt(() => check.as('some_value', Length, {}))
-attempt(() => check.as('some_value', Length, { length: 'x' }))
-attempt(() => check.as('some_value', Length, []))
-attempt(() => check.as('some_value', Length, { length: 1 }))
+apply(() => check.as('some_value', Length, {}))
+apply(() => check.as('some_value', Length, { length: 'x' }))
+apply(() => check.as('some_value', Length, []))
+apply(() => check.as('some_value', Length, { length: 1 }))
 //*/
 
 
 /*
 var ternary = Enum([ null, true, false ])
-attempt(() => check.as('some_enum', ternary, 0))
-attempt(() => check.as('some_enum', ternary, 1))
-attempt(() => check.as('some_enum', ternary, true))
-attempt(() => check.as('some_enum', ternary, false))
-attempt(() => check.as('some_enum', ternary, null))
+apply(() => check.as('some_enum', ternary, 0))
+apply(() => check.as('some_enum', ternary, 1))
+apply(() => check.as('some_enum', ternary, true))
+apply(() => check.as('some_enum', ternary, false))
+apply(() => check.as('some_enum', ternary, null))
 //*/
 
 /*
 var Pair = Tuple([ Number, String ])
 
-// attempt(() => check.as('some_tuple', Pair, 0))
-attempt(() => check.as('some_tuple', Pair, [  1016,   1017 ]))
-// attempt(() => check.as('some_tuple', Pair, [ '1', '2' ]))
-// attempt(() => check.as('some_tuple', Pair, [ '1',  2 ]))
-// attempt(() => check.as('some_tuple', Pair, [ 1 ]))
-// attempt(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
+// apply(() => check.as('some_tuple', Pair, 0))
+// apply(() => check.as('some_tuple', Pair, [  1016,   1017 ]))
+// apply(() => check.as('some_tuple', Pair, [ '1', '2' ]))
+// apply(() => check.as('some_tuple', Pair, [ '1',  2 ]))
+// apply(() => check.as('some_tuple', Pair, [ 1 ]))
+// apply(() => check.as('some_tuple', Pair, [ 1, 2, 3 ]))
 //*/
 
 /*
 var prop_x = Prop(true)
-attempt(() => check.as('foobar', prop_x, 1))
-attempt(() => check.as('foobar', prop_x, {}))
-attempt(() => check.as('foobar', prop_x, { x: 1 }))
+apply(() => check.as('foobar', prop_x, 1))
+apply(() => check.as('foobar', prop_x, {}))
+apply(() => check.as('foobar', prop_x, { x: 1 }))
 //*/
 
 /*
 var prop_x_number = PropType('x', Number)
-attempt(() => check.as('foobar', prop_x_number, 1))
-attempt(() => check.as('foobar', prop_x_number, {}))
-attempt(() => check.as('foobar', prop_x_number, { x: '1' }))
-attempt(() => check.as('foobar', prop_x_number, { x: 1 }))
-attempt(() => check.as('foobar', prop_x_number, { x: 1, y: 'y' }))
+apply(() => check.as('foobar', prop_x_number, 1))
+apply(() => check.as('foobar', prop_x_number, {}))
+apply(() => check.as('foobar', prop_x_number, { x: '1' }))
+apply(() => check.as('foobar', prop_x_number, { x: 1 }))
+apply(() => check.as('foobar', prop_x_number, { x: 1, y: 'y' }))
 //*/
 
-/*
+//*
 var Pt = Record({ x: Number, y: Number, point: true })
 
-attempt(() => check.as('some_point', Pt, 1))
-attempt(() => check.as('some_point', Pt, {}))
-// attempt(() => check.as('some_point', Pt, { x: 1 }))
-attempt(() => check.as('some_point', Pt, { x: 1, y: 'a' }))
-// attempt(() => check.as('some_point', Pt, { x: 1, y: 2 }))
-// attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: false }))
-attempt(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
+// apply(() => check.as('some_point', Pt, 1))
+// apply(() => check.as('some_point', Pt, {}))
+// apply(() => check.as('some_point', Pt, { x: 1 }))
+apply(() => check.as('some_point', Pt, { x: 1, y: 'a' }))
+// apply(() => check.as('some_point', Pt, { x: 1, y: 2 }))
+// apply(() => check.as('some_point', Pt, { x: 1, y: 2, point: false }))
+// apply(() => check.as('some_point', Pt, { x: 1, y: 2, point: true }))
 //*/
 
 /*
@@ -150,31 +150,31 @@ var R2 = Record({ b: String })
 var R = Intersection(R1, R2)
 var U = Union(R1, R2)
 
-// attempt(() => check.as('intr', R, {}))
-// attempt(() => check.as('intr', R, { a: 1 }))
-// attempt(() => check.as('intr', R, { a: 1, b: 2 }))
-// attempt(() => check.as('intr', R, { a: 1, b: 'foo' }))
+// apply(() => check.as('intr', R, {}))
+// apply(() => check.as('intr', R, { a: 1 }))
+// apply(() => check.as('intr', R, { a: 1, b: 2 }))
+// apply(() => check.as('intr', R, { a: 1, b: 'foo' }))
 
-// attempt(() => check.as('uni', U, {}))
-// attempt(() => check.as('uni', U, { a: 1 }))
-// attempt(() => check.as('uni', U, { b: 2 }))
-// attempt(() => check.as('uni', U, { a: 1, b: 2 }))
-// attempt(() => check.as('uni', U, { a: 1, b: 'foo' }))
+// apply(() => check.as('uni', U, {}))
+// apply(() => check.as('uni', U, { a: 1 }))
+// apply(() => check.as('uni', U, { b: 2 }))
+// apply(() => check.as('uni', U, { a: 1, b: 2 }))
+// apply(() => check.as('uni', U, { a: 1, b: 'foo' }))
 //*/
 
 /*
 var nul_number = Nullable(Number)
 
-attempt(() => check.as('nullable', nul_number, 1))
-attempt(() => check.as('nullable', nul_number, null))
-attempt(() => check.as('nullable', nul_number, undefined))
-attempt(() => check.as('nullable', nul_number, '2'))
+apply(() => check.as('nullable', nul_number, 1))
+apply(() => check.as('nullable', nul_number, null))
+apply(() => check.as('nullable', nul_number, undefined))
+apply(() => check.as('nullable', nul_number, '2'))
 //*/
 
 //
 import Wrong from './Wrong'
 
-function attempt (fn)
+function apply (fn)
 {
 	try
 	{

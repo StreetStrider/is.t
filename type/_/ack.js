@@ -3,7 +3,7 @@ import Contract  from '../Contract'
 import Condition from '../Condition'
 import Literal   from '../Literal'
 
-import builtin   from './builtin'
+import builtin from './builtin'
 
 
 export default function ack (contract)
@@ -16,7 +16,6 @@ export default function ack (contract)
 	{
 		return builtin.get(contract)
 	}
-	// TODO: instanceof globals
 	else if (typeof contract === 'function')
 	{
 		var name = contract.name
@@ -30,10 +29,4 @@ export default function ack (contract)
 	{
 		return Literal(contract)
 	}
-}
-
-
-export function acks (contracts)
-{
-	return contracts.map(ack)
 }

@@ -3,7 +3,7 @@
 import def from 'def-prop'
 import val from 'def-prop/val'
 
-import is_object from './is-object'
+import is_object from './_/is-object'
 
 const trait = Symbol('Wrong')
 
@@ -18,34 +18,37 @@ export default function Wrong (code, options)
 	{
 		options = { code, ...options }
 	}
+	code = options.code
 
-	code = String(options.code)
-
-	var wrong = new TypeError(code)
+	var wrong = new TypeError(String(code))
 
 	def(wrong, 'wrong', val(true, ':enum'))
 	def(wrong, trait, val(true))
 	def(wrong, 'constructor', val(Wrong))
 	def(wrong, 'name', val('Wrong'))
 
-	def(wrong, 'contract', val(null, ':write', ':enum'))
+	wrong.contract = null
 
 	wrong.code = code
 	wrong.description = (options.description || '')
 	wrong.detail = (options.detail || null)
 
-	wrong.for    = (options.for    || '' )
+	wrong.issuer = (options.issuer || [])
 	wrong.cause  = (options.cause  || null)
 
 	return wrong
 }
 
 
+Wrong.Kind = (code, options) =>
+{
+	return () => Wrong(code, options)
+}
+
 Wrong.is = (value) =>
 {
 	return (trait in Object(value))
 }
-
 
 Wrong.cast = (value) =>
 {
