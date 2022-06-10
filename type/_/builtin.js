@@ -1,6 +1,7 @@
 /* @primitive */
 
 import Contract from '../Contract'
+import W from '../../Wrong'
 
 
 export var Boolean = Contract('Boolean', value =>
@@ -61,6 +62,46 @@ export var Function = Contract('Function', value =>
 })
 
 
+export var Date = Contract('Date', value =>
+{
+	if (! (value instanceof global.Date))
+	{
+		return 'must_be_date'
+	}
+})
+
+export var RegExp = Contract('RegExp', value =>
+{
+	if (! (value instanceof global.RegExp))
+	{
+		return 'must_be_regexp'
+	}
+})
+
+export var Error = Contract('Error', value =>
+{
+	if (! (value instanceof global.Error))
+	{
+		return 'must_be_error'
+	}
+})
+
+export var Wrong = Contract('Wrong', value =>
+{
+	if (! W.is(value))
+	{
+		return 'must_be_wrong'
+	}
+})
+
+export var Promise = Contract('Promise', value =>
+{
+	if (value instanceof global.Promise) return
+	if (typeof Object(value).then === 'function') return
+	return 'must_be_promise'
+})
+
+
 export default new Map(
 [
 	[ global.Boolean, Boolean ],
@@ -70,20 +111,9 @@ export default new Map(
 	[ global.Object, Object ],
 	[ global.Array,  Array ],
 	[ global.Function, Function ],
+	[ global.Date, Date ],
+	[ global.RegExp, RegExp ],
+	[ global.Error, Error ],
+	[ W, Wrong ],
+	[ global.Promise, Promise ],
 ])
-
-// function Instance ()
-// {
-// TODO: instanceof globals
-// }
-
-// Error
-// TypeError
-// Wrong
-
-// Date
-// RegExp
-// Map
-// Set
-
-// Promise
