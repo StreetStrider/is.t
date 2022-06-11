@@ -2,7 +2,7 @@
      "name": "is.t",
   "version": "0.0.0",
 
-  "description": "lightweight runtime type,invariant and contract check",
+  "description": "runtime typecheck library",
 
   "license": "ISC",
    "author": "Strider <strange.transistor@gmail.com>",
