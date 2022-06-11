@@ -25,18 +25,17 @@ var condition = Condition(x => x > 1, 'Value must be greater than 1')
 var Glue = Compose('Glue', String, Values)
 var Seq  = Compose('Seq', Array, Values)
 
-/*
+//*
 
 function concat (glue, seq)
 {
-	check.as('seq',  Seq,  seq)
-	check.as('glue', Glue, glue)
+	check.unit({ seq }, Seq)
+	check.unit({ glue }, Glue)
 
 	return [ ...seq ].join(glue)
 }
 
-
-/*
+//*
 Promise.resolve()
 .then(() =>
 {
@@ -132,7 +131,7 @@ apply(() => check.as('foobar', prop_x_number, { x: 1 }))
 apply(() => check.as('foobar', prop_x_number, { x: 1, y: 'y' }))
 //*/
 
-//*
+/*
 var Pt = Record({ x: Number, y: Number, point: true })
 
 // apply(() => check.as('some_point', Pt, 1))

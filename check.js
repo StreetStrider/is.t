@@ -21,7 +21,7 @@ check.as    = check_as
 check.cause = check_cause
 
 
-function check_unit (contract, against_unit)
+function check_unit (against_unit, contract)
 {
 	var [ name, against_value ] = unitval(against_unit)
 
