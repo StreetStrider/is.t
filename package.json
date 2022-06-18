@@ -9,9 +9,10 @@
 
   "scripts":
   {
-      "st": "eslint .",
-     "try": "node -r esm -r console-ultimate start",
-    "test": "npm run st && npm run try"
+         "st": "eslint .",
+        "try": "node -r esm -r console-ultimate example/mixed",
+       "test": "npm run st && npm run try",
+    "example": "cd example; node -r esm -r console-ultimate"
   },
 
   "dependencies":
@@ -25,6 +26,9 @@
 
   "devDependencies":
   {
+    "is.t":
+      "./",
+
     "esm":
       "3",
 
