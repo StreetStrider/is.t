@@ -83,6 +83,19 @@ This field is not popular theese days, but there was a lot of them. To name my f
 
 Runtime type checking has an inherent overhead. It is possible to eliminate overhead completely and remove typechecks in production. You'll need code eliminating engine, like Rollup and specific transform, similar to [@rollup/plugin-strip](https://www.npmjs.com/package/@rollup/plugin-strip). Prepend your typechecks with some label (like `dev`), then apply label removing transformation for prod build.
 
+```js
+// this should be tree-shaken if no usages
+import check from 'is.t/check'
+
+function sum (a, b) {
+	// prepend with dev label
+	dev: check.unit({ a }, Number)
+	dev: check.unit({ b }, Number)
+
+	return a + b
+}
+```
+
 ## license
 
 ISC. © Strider, 2022.
