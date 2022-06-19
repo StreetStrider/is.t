@@ -1,4 +1,4 @@
-/* eslint complexity: [ 2, 6 ] */
+/* eslint complexity: [ 1, 8 ] */
 
 import Wrong from './Wrong'
 import is_object from './_/is-object'
