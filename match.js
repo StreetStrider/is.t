@@ -25,22 +25,24 @@ function test_value (predicate, value)
 	{
 		return (predicate === as_string(value))
 	}
-	else if (predicate instanceof RegExp)
+	if (predicate instanceof RegExp)
 	{
 		return predicate.test(as_string(value))
 	}
-	else if (typeof predicate === 'function')
+	if (is_error_constructor(predicate))
+	{
+		if (value instanceof predicate) return true
+	}
+	/*if (typeof predicate === 'function')
 	{
 		return Boolean(predicate(value))
-	}
-	else if (is_object(predicate) && is_object(value))
+	}*/
+	if (is_object(predicate) && is_object(value))
 	{
-		return test_object(predicate, value)
+		if (test_object(predicate, value)) return true
 	}
-	else
-	{
-		return (predicate === value)
-	}
+
+	return (predicate === value)
 }
 
 function test_object (predicate, error)
@@ -78,4 +80,11 @@ function as_string (error)
 	{
 		return String(error)
 	}
+}
+
+function is_error_constructor (constructor)
+{
+	if (constructor.prototype === Error.prototype) return true
+	if (constructor.prototype instanceof Error) return true
+	return false
 }
