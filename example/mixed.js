@@ -27,7 +27,7 @@ var condition = Condition(x => x > 1, 'Value must be greater than 1')
 var Glue = Compose('Glue', String, Values)
 var Seq  = Compose('Seq', Array, Values)
 
-/*
+//*
 
 function concat (glue, seq)
 {
@@ -106,10 +106,10 @@ assess(() => check.as('some_enum', ternary, false))
 assess(() => check.as('some_enum', ternary, null))
 //*/
 
-/*
+//*
 var Pair = Tuple([ Number, String ])
 
-// assess(() => check.as('some_tuple', Pair, 0))
+assess(() => check.as('some_tuple', Pair, 0))
 // assess(() => check.as('some_tuple', Pair, [  1016,   1017 ]))
 // assess(() => check.as('some_tuple', Pair, [ '1', '2' ]))
 // assess(() => check.as('some_tuple', Pair, [ '1',  2 ]))

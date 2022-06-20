@@ -17,3 +17,14 @@ export function invoke (fn, args, fn_catch)
 {
 	return attempt(() => fn(...(args || [])), fn_catch)
 }
+
+
+import set_trace from './set-trace'
+
+export function toptrace (fn, args, trace)
+{
+	return invoke(fn, args, e =>
+	{
+		throw set_trace(e, trace)
+	})
+}

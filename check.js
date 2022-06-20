@@ -1,7 +1,8 @@
-// TODO: Error.captureStackTrace(wrong, contract)
 
 import Wrong from './Wrong'
 import { invoke } from './_/attempt'
+import { toptrace } from './_/attempt'
+import set_trace from './_/set-trace'
 import check1 from './_/check'
 import unitval from './_/unitval'
 
@@ -10,9 +11,17 @@ export default function check (contract, against_value)
 {
 	switch (arguments.length)
 	{
-	case 0:  return check
-	case 1:  return (against_value) => check1(contract, against_value)
-	default: return check1(contract, against_value)
+	case 0:
+		return check
+
+	case 1:
+		return function check_contract (against_value)
+		{
+			toptrace(check1, [ contract, against_value ], check_contract)
+		}
+
+	default:
+		return toptrace(check1, [ contract, against_value ], check)
 	}
 }
 
@@ -26,7 +35,7 @@ function check_unit (against_unit, contract)
 {
 	var [ name, against_value ] = unitval(against_unit)
 
-	return check_as(name, contract, against_value)
+	return toptrace(check_as, [ name, contract, against_value ], check_unit)
 }
 
 
@@ -42,6 +51,7 @@ function as_issuer (issuer)
 	return (wrong) =>
 	{
 		wrong.issuer.unshift(issuer)
+		set_trace(wrong, check_as)
 		throw wrong
 	}
 }
@@ -58,9 +68,9 @@ function as_sub_of (sub_fn)
 {
 	return (cause) =>
 	{
-		var
-		wrong = Wrong.cast(sub_fn())
+		var wrong   = Wrong.cast(sub_fn())
 		wrong.cause = Wrong.cast(cause)
+		set_trace(wrong, check_sub)
 		throw wrong
 	}
 }

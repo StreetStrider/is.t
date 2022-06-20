@@ -4,6 +4,8 @@ import val from 'def-prop/val'
 
 import mut_name from 'function-name'
 
+import set_trace from '../_/set-trace'
+
 import Wrong from '../Wrong'
 
 const trait = Symbol('Contract')
@@ -31,7 +33,7 @@ export default function Contract (name, fn)
 
 		/* @mutable */
 		wrong = Wrong.cast(wrong)
-		Error.captureStackTrace(wrong, contract)
+		set_trace(wrong, contract)
 		wrong.contract = contract
 
 		throw wrong
