@@ -18,7 +18,7 @@ export default function PropType (name, type)
 	return Contract('PropType', value =>
 	{
 		check(prop, value)
-		check.cause(type, value[name], () =>
+		check.sub(type, value[name], () =>
 		{
 			var detail =
 			{

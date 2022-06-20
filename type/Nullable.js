@@ -19,7 +19,7 @@ export default function Nullable (type)
 			return
 		}
 
-		check.cause(type, value, () =>
+		check.sub(type, value, () =>
 		{
 			var detail =
 			{

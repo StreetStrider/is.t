@@ -42,7 +42,7 @@ export default function Tuple (tuple)
 		{
 			const C = ack(tuple[n])
 
-			check.cause(C, value[n], () =>
+			check.sub(C, value[n], () =>
 			{
 				var detail =
 				{

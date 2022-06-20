@@ -1,3 +1,4 @@
+// TODO: Error.captureStackTrace(wrong, contract)
 
 import Wrong from './Wrong'
 import { invoke } from './_/attempt'
@@ -16,9 +17,9 @@ export default function check (contract, against_value)
 }
 
 
-check.unit  = check_unit
-check.as    = check_as
-check.cause = check_cause
+check.unit = check_unit
+check.as   = check_as
+check.sub  = check_sub
 
 
 function check_unit (against_unit, contract)
@@ -46,14 +47,14 @@ function as_issuer (issuer)
 }
 
 
-function check_cause (contract, against_value, sub_fn)
+function check_sub (contract, against_value, sub_fn)
 {
 	check_as('sub_fn', Function, sub_fn)
 
-	return invoke(check1, [ contract, against_value ], caused(sub_fn))
+	return invoke(check1, [ contract, against_value ], as_sub_of(sub_fn))
 }
 
-function caused (sub_fn)
+function as_sub_of (sub_fn)
 {
 	return (cause) =>
 	{

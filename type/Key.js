@@ -13,5 +13,5 @@ var type = Union(Number, String, Symbol)
 
 export default Contract('Key', value =>
 {
-	check.cause(type, value, () => ({ code, description }))
+	check.sub(type, value, () => ({ code, description }))
 })
