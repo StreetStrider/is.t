@@ -2,7 +2,7 @@
 
 Runtime typecheck library.
 
-## what it's for?
+## what's it for?
 
 In some rare occasions you don't want or can't involve static type checking. This library is for runtime type checking. Being a runtime library allows it to be used in a more dynamic manner with a lot of polymorphic code, dynamic typing and late binding, while still have as much guarantees as you need.
 
