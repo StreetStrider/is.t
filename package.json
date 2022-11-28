@@ -7,6 +7,8 @@
   "license": "ISC",
    "author": "Strider <strange.transistor@gmail.com>",
 
+  "engines": { "node": ">=8.3" },
+
   "scripts":
   {
          "st": "eslint .",
@@ -36,10 +38,10 @@
       "3",
 
     "eslint":
-      "7",
+      "8",
 
     "js-outlander":
-      "StrangeTransistor/js-outlander#2.10.0",
+      "StrangeTransistor/js-outlander#2.11.0",
 
     "eslint-plugin-node":
       "11"
