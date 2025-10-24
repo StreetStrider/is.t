@@ -11,7 +11,7 @@
 
   "scripts":
   {
-         "st": "eslint .",
+         "st": "eslint",
         "try": "node -r esm -r console-ultimate example/mixed",
        "test": "npm run st && npm run try",
     "example": "cd example; node -r esm -r console-ultimate"
@@ -38,10 +38,10 @@
       "3",
 
     "eslint":
-      "8",
+      "9.38",
 
-    "js-outlander":
-      "StrangeTransistor/js-outlander#2.11.0",
+    "outlander":
+      "StrangeTransistor/outlander#3.0.0",
 
     "eslint-plugin-node":
       "11"
