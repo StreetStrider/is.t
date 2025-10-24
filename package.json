@@ -13,7 +13,9 @@
   {
          "st": "eslint",
         "try": "node -r esm -r console-ultimate example/mixed",
-       "test": "npm run st && npm run try",
+
+       "test": "run-s st try",
+
     "example": "cd example; node -r esm -r console-ultimate"
   },
 
@@ -30,6 +32,9 @@
   {
     "is.t":
       "./",
+
+    "npm-run-all":
+      "4.1.5",
 
     "esm":
       "3",
