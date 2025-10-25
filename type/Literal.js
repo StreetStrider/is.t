@@ -1,6 +1,6 @@
 /* @primitive */
 
-import Contract from './Contract'
+import Contract from './Contract.js'
 
 const code = 'must_be_exact_value'
 const description = 'Literal value expected'

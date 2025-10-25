@@ -1,10 +1,10 @@
 
-import Wrong from './Wrong'
-import { invoke } from './_/attempt'
-import { toptrace } from './_/attempt'
-import set_trace from './_/set-trace'
-import check1 from './_/check'
-import unitval from './_/unitval'
+import Wrong from './Wrong.js'
+import { invoke } from './_/attempt.js'
+import { toptrace } from './_/attempt.js'
+import set_trace from './_/set-trace.js'
+import check1 from './_/check.js'
+import unitval from './_/unitval.js'
 
 
 export default function check (contract, against_value)

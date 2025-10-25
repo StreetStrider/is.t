@@ -1,7 +1,7 @@
 /* @composite */
 
-import check from '../check'
-import Contract from './Contract'
+import check from '../check.js'
+import Contract from './Contract.js'
 
 
 export default function Compose (name, ...contracts)

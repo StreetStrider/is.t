@@ -1,7 +1,7 @@
 /* @composite */
 
-import check from '../check'
-import Contract from './Contract'
+import check from '../check.js'
+import Contract from './Contract.js'
 
 const code = 'must_be_intersection_of'
 const description = 'Type mismatch with the some of contracts'

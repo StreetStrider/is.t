@@ -1,7 +1,7 @@
 /* @primitive */
 
-import check    from '../check'
-import Contract from './Contract'
+import check    from '../check.js'
+import Contract from './Contract.js'
 
 const code = 'must_satisfy_assert'
 

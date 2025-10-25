@@ -1,8 +1,8 @@
 /* @composite */
 
-import Contract from './Contract'
-import check    from '../check'
-import PropType from './PropType'
+import Contract from './Contract.js'
+import check    from '../check.js'
+import PropType from './PropType.js'
 
 
 export default function Record (record)

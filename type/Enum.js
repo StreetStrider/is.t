@@ -1,8 +1,8 @@
 /* @primitive */
 
-import check    from '../check'
-import Iterable from './Iterable'
-import Contract from './Contract'
+import check    from '../check.js'
+import Iterable from './Iterable.js'
+import Contract from './Contract.js'
 
 const code = 'must_be_one_of'
 const description = 'One of specific values expected'

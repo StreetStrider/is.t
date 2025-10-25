@@ -1,6 +1,6 @@
 
-import check from './check'
-import Match from './match'
+import check from './check.js'
+import Match from './match.js'
 
 
 export default function handle (predicate, handler_fn)

@@ -1,7 +1,7 @@
 
-import check from '../check'
+import check from '../check.js'
 
-import Contract from './Contract'
+import Contract from './Contract.js'
 
 const code = 'must_instanceof'
 const description = 'Value must be an instance of specific prototype'

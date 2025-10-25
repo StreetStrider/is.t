@@ -1,9 +1,9 @@
 /* @primitive */
 
-import check from '../check'
+import check from '../check.js'
 
-import Union from './Union'
-import Contract from './Contract'
+import Union from './Union.js'
+import Contract from './Contract.js'
 
 const code = 'must_be_key_for_object'
 const description = 'Value which can be a key is expected'

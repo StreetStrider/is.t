@@ -1,8 +1,8 @@
 /* @primitive */
 
-import check from '../check'
-import Key from './Key'
-import Contract from './Contract'
+import check from '../check.js'
+import Key from './Key.js'
+import Contract from './Contract.js'
 
 const code = 'must_contain_prop'
 

@@ -1,9 +1,9 @@
 
-import Contract  from '../Contract'
-import Condition from '../Condition'
-import Literal   from '../Literal'
+import Contract  from '../Contract.js'
+import Condition from '../Condition.js'
+import Literal   from '../Literal.js'
 
-import builtin from './builtin'
+import builtin from './builtin.js'
 
 
 export default function ack (contract)

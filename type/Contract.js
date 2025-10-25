@@ -4,9 +4,9 @@ import val from 'def-prop/val'
 
 import mut_name from 'function-name'
 
-import set_trace from '../_/set-trace'
+import set_trace from '../_/set-trace.js'
 
-import Wrong from '../Wrong'
+import Wrong from '../Wrong.js'
 
 const trait = Symbol('Contract')
 

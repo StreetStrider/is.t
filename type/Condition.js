@@ -1,6 +1,6 @@
 /* @primitive */
 
-import Contract from './Contract'
+import Contract from './Contract.js'
 
 const code = 'must_met_condition'
 

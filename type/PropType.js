@@ -1,10 +1,10 @@
 /* @composite */
 
-import check from '../check'
-import ack from './_/ack'
+import check from '../check.js'
+import ack from './_/ack.js'
 
-import Prop     from './Prop'
-import Contract from './Contract'
+import Prop     from './Prop.js'
+import Contract from './Contract.js'
 
 const code = 'must_have_type_in_prop'
 const description = 'Type mismatch in specific property in object'

@@ -1,7 +1,7 @@
 /* eslint complexity: [ 1, 8 ] */
 
-import Wrong from './Wrong'
-import is_object from './_/is-object'
+import Wrong from './Wrong.js'
+import is_object from './_/is-object.js'
 
 
 export default function match (predicate, error)

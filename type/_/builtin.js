@@ -1,7 +1,7 @@
 /* @primitive */
 
-import Contract from '../Contract'
-import W from '../../Wrong'
+import Contract from '../Contract.js'
+import W from '../../Wrong.js'
 
 
 export var Boolean = Contract('Boolean', value =>

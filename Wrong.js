@@ -3,7 +3,7 @@
 import def from 'def-prop'
 import val from 'def-prop/val'
 
-import is_object from './_/is-object'
+import is_object from './_/is-object.js'
 
 const trait = Symbol('Wrong')
 

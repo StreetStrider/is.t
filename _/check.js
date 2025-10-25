@@ -1,5 +1,6 @@
 
-import ack from '../type/_/ack'
+import ack from '../type/_/ack.js'
+
 
 export default function check (contract, against_value)
 {

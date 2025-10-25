@@ -19,7 +19,7 @@ export function invoke (fn, args, fn_catch)
 }
 
 
-import set_trace from './set-trace'
+import set_trace from './set-trace.js'
 
 export function toptrace (fn, args, trace)
 {

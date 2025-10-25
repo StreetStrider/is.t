@@ -1,8 +1,8 @@
 /* @composite */
 
-import Contract from './Contract'
+import Contract from './Contract.js'
 
-import Length from './Length'
+import Length from './Length.js'
 
 const code = 'must_have_values'
 const description = 'One or more elements expected'
